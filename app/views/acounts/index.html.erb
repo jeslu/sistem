@@ -1,0 +1,27 @@
+
+
+<h1>Cuenta o Movimientos</h1>
+
+<div id="acounts">
+  <div class="table-responsive">
+  <table class="table">
+  <thead>
+    <tr>
+     
+      <th scope="col">Descripcion</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Importe</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @acounts.each do |acount| %>
+    <%= render acount %>
+   
+  <% end %>
+    </tbody>
+</table>
+ -----------------------------------------------------------------------------------------------------------------------------------------
+<h1>Total <%= number_to_currency( @client.acounts.sum("importe")) %> </h1>
+</div>
+
+<%= link_to "Agregar Deuda", new_client_acount_path %>| <%= link_to  "Regresar", client_path(@client) %>

@@ -1,0 +1,16 @@
+
+  <div id="<%= dom_id product %>">
+    <tr>
+      <th scope="row"> <%= product.id %></th>
+     
+      <td><%= product.code %></td>
+      <td><%= product.name_p %></td>
+      <td><%= product.description %></td>
+      <td> <%= product.active %></td>
+      <td> <%= product.precio %></td>
+      <td>  <%= link_to "Show", product %></td>
+      <td> <%= link_to "Editar", edit_product_path(product) %> </td>
+      <td> <%= button_to "Destroy this product", product, method: :delete %> </td>
+    </tr>
+    </div>
+

@@ -1,0 +1,48 @@
+
+<div class="shadow-lg p-3 mb-5 bg-body rounded"> 
+  <%= form_with(model: acount, url:  [client, acount]) do |form| %>
+    <% if acount.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(acount.errors.count, "error") %> Prohibido no se guardo los datos:</h2>
+
+        <ul>
+          <% acount.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row g-3">
+
+    <div class="col">
+     <%= form.label :description%>
+    <%= form.text_area :description, :class => "form-control", :placeholder => "Descripcion:" %>
+    
+    </div>
+    <div class="col">
+      <%= form.label :importe %>
+      <%= form.number_field :importe, :class => "form-control", :placeholder => "$" %>
+    </div>
+
+    <div class="col">
+      <%= form.label :fecha  %>
+      <%= form.date_field :fecha, :class => "form-control" %>
+    </div>
+
+    </div>
+
+
+  <div>
+    <%= form.label :Pagado? %>
+    <%= form.check_box :active, :class => "form-check-input" %>
+  </div>
+<br>
+  <div>
+    <%= form.submit 'Agregar', :class => "btn btn-primary" %>
+  </div>
+<% end %>
+</div>
+
+
+

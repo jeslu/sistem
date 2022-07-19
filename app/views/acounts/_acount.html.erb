@@ -1,0 +1,18 @@
+<div id="<%= dom_id acount %>">
+  
+
+    <tr>
+      
+      <td><%= acount.description %></td>
+      <td><%= acount.fecha %></td>
+      <td><%=  number_to_currency(acount.importe) %></td>
+       <td>
+      <%= link_to "Show", client_acount_path(@client, acount) %>
+      </td>
+      <td><%= link_to  "Editar", edit_client_acount_path(@client, acount) %></td>
+      <td> <%= button_to "eliminar", [@client,acount], method: :delete, data: { confirm: 'Esta seguro de eliminar deuda Pagada?' } %> </td>
+    </tr>
+   
+
+
+</div>

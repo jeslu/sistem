@@ -1,0 +1,186 @@
+<div class="container">
+ <div class="shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="container">
+  <div class="row">
+    <div class="col">
+      <%= render @client %>
+      
+      <div>
+  </div>
+    </div>
+    <div class="col">
+    
+      <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Agregar Deudas o Movimiento  <br>de<br> <%= @client.name%> <%= @client.apellido%>
+        </button>
+        
+          
+          
+    </div>
+    <div class="col">
+     <h1>Total:</h1>
+        <h1>  <%= number_to_currency( @client.get_total) %> </h1>
+    </div>
+
+
+    <%= link_to  "Regresar", clients_path, :class => "btn btn-outline-primary" %>
+  </div>
+
+
+
+
+
+
+
+  <div class="shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="row align-items-start">
+      <div class="col">
+      <h3>DEUDAS</h3>
+      
+      <div class="table-responsive">
+      <table class="table">
+            <thead>
+              <tr> 
+                <th scope="col">Descripcion</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Importe</th>
+                 <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @client.acounts.each do |acount| %>
+              <% if acount.active != true %>
+                
+                 
+              <tr class="table-warning">
+                <td><%= link_to acount.description, edit_client_acount_path(@client, acount), class: 'nav-link ' %></td>
+                <td><%= acount.fecha %></td>
+                <td><%= number_to_currency(acount.importe) %></td>
+                <td>  <%= form_with(model: acount, url: [@client, acount]) do |form| %>
+                        <div class="field">
+                          <%= form.check_box :active, :checked=> true, :style => 'visibility: hidden;' %>
+                        </div>
+                        <div class="field">
+                          <button type="submit" class="btn btn-warning ">PAGAR</button>
+                        </div>
+                      <% end %>
+                 </td>
+                
+              
+                  
+              </tr>
+              
+              <% end %>
+              
+              <%end%>
+            </tbody>
+          </table>
+      </div>
+    </div>
+
+    <div class="col">
+    <h3>DEUDAS PAGADAS</h3>
+      <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                
+                <th scope="col">Descripcion</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Importe</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @client.acounts.each do |acount| %>
+              <% if acount.active? %>
+              <tr class="table-success">
+                
+                <td><%= acount.description %></td>
+                <td><%= acount.fecha %></td>
+                <td><%= number_to_currency(acount.importe) %></td>
+                
+                 <td><%= link_to  "Editar", edit_client_acount_path(@client, acount) %></td>
+                  <td> <%= button_to "eliminar", [@client,acount], method: :delete, data: { confirm: 'Esta seguro de eliminar deuda Pagada?' }, :class => "btn btn-danger" %> </td>
+              </tr>
+              
+              <% end %>
+              
+              <%end%>
+            </tbody>
+          </table>
+
+      </div>
+    </div>
+   
+  </div>
+
+
+
+
+    
+        
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!--MODAL-->
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ADDS</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+
+        <%= form_with model: [ @client, @client.acounts.build ] do |form| %>
+
+
+                    <div class="row g-3">
+
+                    <div class="col">
+                    <%= form.label :description%>
+                    <%= form.text_area :description, :class => "form-control", :placeholder => "Descripcion:" %>
+                    
+                    </div>
+                    <div class="col">
+                      <%= form.label :importe %>
+                      <%= form.number_field :importe, :class => "form-control", :placeholder => "$" %>
+                    </div>
+
+                    <div class="col">
+                      <%= form.label :fecha  %>
+                      <%= form.date_field :fecha, :class => "form-control" %>
+                    </div>
+
+                    </div>
+                  <div>
+                    <%= form.label :Pagado? %>
+                    <%= form.check_box :active, :class => "form-check-input" %>
+                  </div>
+                <br>
+                <div>
+                  <%= form.submit 'Agregar', :class => "btn btn-primary" %>
+                </div>
+
+          <%end%>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+

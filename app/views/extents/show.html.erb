@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @extent %>
+
+<div>
+  <%= link_to "Edit this extent", edit_extent_path(@extent) %> |
+  <%= link_to "Back to extents", extents_path %>
+
+  <%= button_to "Destroy this extent", @extent, method: :delete %>
+</div>

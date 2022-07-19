@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  fecha: 2022-06-11
+  description: MyText
+  importe: 9.99
+  active: false
+
+two:
+  client: two
+  fecha: 2022-06-11
+  description: MyText
+  importe: 9.99
+  active: false

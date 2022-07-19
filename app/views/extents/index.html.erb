@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Extents</h1>
+
+<div id="extents">
+  <% @extents.each do |extent| %>
+    <%= render extent %>
+    <p>
+      <%= link_to "Show this extent", extent %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New extent", new_extent_path %>

@@ -1,0 +1,51 @@
+<p style="color: green"><%= notice %></p>
+<div class="container-xxl">
+<div class="shadow-lg p-3 mb-5 bg-body rounded">
+
+<div class="container">
+  <div class="row row-cols-3">
+    <div class="col"><%= link_to  "Agregar Categorias", new_category_path, class:"btn btn-primary" %></div>
+    <div class="col"><%= link_to  "Agregar marcas", new_mark_path, class:"btn btn-primary" %></div>
+    <div class="col"><%= link_to  "Agregar Umedidas", new_extent_path, class:"btn btn-primary" %></div>
+   
+  </div>
+</div>
+
+</div>
+
+<h1>Products</h1>
+<div class="shadow-lg p-3 mb-5 bg-body rounded">
+
+
+<div class="table-responsive">
+  <table class="table">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">code</th>
+      <th scope="col">nombre</th>
+      <th scope="col">Description</th>
+      <th scope="col">stok</th>
+      <th scope="col">precio</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+
+<div id="products">
+  <% @products.each do |product| %>
+    <%= render product %>
+  
+  <% end %>
+</div>
+</tbody>
+</table>   
+
+<%= link_to "New product", new_product_path %>
+
+
+</div>
+
+
+</div>

@@ -1,0 +1,66 @@
+<!-- Button trigger modal -->
+
+
+
+<%=  form_with(url: clients_path, method: :get, class: "row g-3  justify-content-end",  data: {turbo_frame: "name"}) do |form| %>
+
+    <div class="col-auto">
+        <%= form.label :query, "." %>
+      </div>
+      <div class="col-auto">
+        <%= form.text_field :query, class: "form-control", placeholder: "Buscar...." %>
+    </div>
+    <div class="col-auto">
+        <%= form.submit 'BUSCAR', class: "btn btn-warning mb-3 rounded-pill" %>
+    </div>
+<% end %>
+
+<h1>
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Nuevo cliente
+</button>
+</h1>
+<div class="shadow-lg p-3 mb-5 bg-body rounded">
+<div class="container">
+  <div id="clients">
+    <div class="row shadow">
+      <% @clients.each do |client| %>
+          <div class="col-sm shadow">
+              <%= render client %>
+              <%= link_to  "cuenta",client_acounts_path(client) %>
+          
+          </div> 
+        <% end %>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Cliente</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      
+    <%= render "form", client: @client %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

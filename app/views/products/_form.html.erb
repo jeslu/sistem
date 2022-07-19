@@ -1,0 +1,65 @@
+<%= form_with(model: product) do |form| %>
+  <% if product.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name_p, style: "display: block" %>
+    <%= form.text_field :name_p %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :category_id, style: "display: block" %>
+    
+    <%= form.collection_select(:category_id, Category.all, :id, :category, options = {}, {:class => "form-control"})%>
+  </div>
+
+  <div>
+    <%= form.label :mark_id, style: "display: block" %>
+                                 
+    <%= form.collection_select(:mark_id, Mark.all, :id, :mark, options = {}, {:class => "form-control"})%>
+  </div>
+
+  <div>
+    <%= form.label :extent_id, style: "display: block" %>
+                           
+    <%= form.collection_select(:extent_id, Extent.all, :id, :extent, options = {}, {:class => "form-control"})%>
+  </div>
+
+  <div>
+    <%= form.label :code, style: "display: block" %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div>
+    <%= form.label :stok, style: "display: block" %>
+    <%= form.number_field :stok %>
+  </div>
+
+  <div>
+    <%= form.label :precio, style: "display: block" %>
+    <%= form.text_field :precio %>
+  </div>
+
+  <div>
+    <%= form.label :active, style: "display: block" %>
+    <%= form.check_box :active %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

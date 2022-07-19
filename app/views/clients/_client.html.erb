@@ -1,0 +1,38 @@
+<div id="<%= dom_id client %>">
+   
+     
+    
+      <div class="card" style="width: 20rem;">
+                              
+            <div class="card-body">
+                  <%= link_to client do %>
+                        <h5 class="card-title"><%= client.name %> <%=  client.apellido %></h5>
+                        <h6 class="card-subtitle mb-1 text-muted">Cliente</h6>
+                  <% end %>
+            
+                  <p class="card-text"><strong>telefono: </strong> <%= client.cel %>  <br>
+                  <strong> Direccion:</strong> <%= client.direccion %>
+            
+                  <p class="card-text"><small class="text-muted">Creado: <%= client.created_at.to_date%></small></p>
+                  
+                  
+            
+      
+             
+            </div>
+              <div class="row align-items-start">
+                  <div class="col">
+
+                         <%= link_to  "Editar", edit_client_path(client), :class => "btn btn-primary"  %> 
+                  </div>
+                  <div class="col">
+      
+                        <%= button_to "Eliminar", @client, method: :delete, :class => "btn btn-danger" %>
+                  </div>
+    
+            </div>
+              
+      </div>
+</div>
+
+

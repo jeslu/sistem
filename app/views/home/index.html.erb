@@ -1,0 +1,101 @@
+  
+<%= render "home/menu" %>
+
+<h1>Sistema CodeWeb</h1>
+
+
+<div class="shadow-lg p-3 mb-5 bg-body rounded">
+
+  <div class="container">
+    <div class="row row-cols-3">
+
+
+      <!-- SHADOW-->
+      <div class="shadow-lg p-3 mb-5 bg-body rounded">
+      <!-- COLUM-->
+        <div class="col">
+          <!-- CARD-->
+          <%= link_to  clients_url  do %>
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title"> Cientes</h5>
+                <p class="card-text">Un registro de nuestros clientes donde analizamis cada uno de ellos.</p>
+                
+                <br>
+                <%= link_to  "Registrar clientes", new_client_path, class:"btn btn-primary" %>
+              </div>
+          </div>
+          <%end%>
+        </div>
+      </div>
+
+
+
+
+      <div class="shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Ventas</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">REALIZAR VENTA</a>
+                </div>
+            </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="col">
+          <%= link_to products_url do %>
+            <div class="card" style="width: 18rem;">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                  <h5 class="card-title">Productos</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <br>
+                  <%= link_to  "Registrar Productos", new_product_path, class:"btn btn-primary" %>
+            </div>
+          </div>
+          <%end%>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="shadow-lg p-3 mb-5 bg-body rounded">
+
+<div class="container">
+  <div class="row row-cols-3">
+  <div class="shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="col">Cotizaciones</div>
+    </div>
+    <div class="shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="col">Orden de servicio</div>
+    </div>
+     <div class="shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="col">Resepcion de Equipos</div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+

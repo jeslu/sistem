@@ -1,0 +1,9 @@
+
+<%= render @acount %>
+
+<div>
+  <%= link_to "Edit this acount", edit_client_acount_path(@client,@acount) %> |
+  <%= link_to "Back to acounts", client_acounts_path %>
+
+  <%= button_to "Destroy this acount", [@client, @acount], method: :delete %>
+</div>

@@ -1,0 +1,10 @@
+<h1>Editing acount</h1>
+
+<%= render "form", acount: @acount, client: @client %>
+
+<br>
+
+<div>
+  <%= link_to "Show this acount", [@client, @acount] %> |
+  <%= link_to "Back to acounts", client_acounts_path(@client) %>
+</div>
