@@ -1,10 +1,54 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @product %>
 
-<div>
-  <%= link_to "Edit this product", edit_product_path(@product) %> |
-  <%= link_to "Back to products", products_path %>
 
-  <%= button_to "Destroy this product", @product, method: :delete %>
+<div class="shadow-lg p-3 mb-5 bg-body rounded">
+
+
+
+      <div class="row align-items-start">
+        <div class="col">
+          <%= render @product %>
+        
+          <div class="input-group mb-3" >     
+           <%= link_to "Editar", edit_product_path(@product), :class => "btn btn-info" %>  <%= button_to "Eliminar", @product, :class => "btn btn-danger", method: :delete %>
+          </div>
+        </div>
+        <div class="col">
+          jaja movimientos imagen del producto
+        </div>
+          
+      </div>
+      <%= link_to  "nuevo movimiento", new_movimient_product_path(@product), class:"btn btn-primary" %>
+
+        <%= link_to "Regresar", products_path %>
+  </div>
+
+ <div class="shadow-lg p-3 mb-5 bg-body rounded">
+ <h1>Movimientos</h1>
+ <div class="table-responsive">
+  <table class="table">
+    
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Tipo De Movimiento</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">cantidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+   
+  </tbody>
+
+
+  </table>
 </div>
+
+ </div>

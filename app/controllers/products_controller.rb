@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
+  
   end
 
   # GET /products/new
@@ -56,6 +57,11 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def new_movimient
+      @product = Product.find(params[:id])
+  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,0 +1,44 @@
+<%= form_with(model: sale) do |form| %>
+  <% if sale.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
+
+      <ul>
+        <% sale.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+ 
+     <%= form.collection_select(:user_id, User.all, :id, :email, options = {}, {:class => "form-control"})%>
+  </div>
+
+  <div>
+    <%= form.label :client_id, style: "display: block" %>
+  
+     <%= form.collection_select(:client_id, Client.all, :id, :name, options = {}, {:class => "form-control"})%>
+  </div>
+
+  <div>
+    <%= form.label :fecha, style: "display: block" %>
+    <%= form.date_field :fecha %>
+  </div>
+
+  <div>
+    <%= form.label :total, style: "display: block" %>
+    <%= form.text_field :total %>
+  </div>
+
+  <div>
+    <%= form.label :active, style: "display: block" %>
+    <%= form.check_box :active %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

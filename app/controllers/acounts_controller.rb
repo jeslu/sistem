@@ -13,7 +13,9 @@ class AcountsController < ApplicationController
 
   # GET /acounts/new
   def new
-    @acount = @client.acounts.build
+    
+    @acount = @client.acounts.build(fecha: Time.now)
+
   end
 
   # GET /acounts/1/edit

@@ -35,7 +35,17 @@
 
 <div id="products">
   <% @products.each do |product| %>
-    <%= render product %>
+    <tr>
+      <th scope="row"> <%= product.id %></th>
+     
+      <td><%= link_to product.code, product%></td>
+      <td><%= product.name_p %></td>
+      <td><%= product.description %></td>
+      <td> <%= product.stok %></td>
+      <td> <%= number_to_currency(product.precio) %></td>
+  
+      
+    </tr>
   
   <% end %>
 </div>

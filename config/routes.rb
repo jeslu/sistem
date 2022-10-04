@@ -1,15 +1,24 @@
 Rails.application.routes.draw do
+  resources :sales do
+    resources :items
+  end
   
-  resources :products
+  resources :products do
+   member do
+     get :new_movimient
+     post :create_movimient  
+   end
+  end
+
   resources :clients do
     resources :acounts
-  
-    end
+  end
    
    
   resources :extents
   resources :marks
   resources :categories
+
   devise_for :users
   #get 'home/index'
   root "home#index"

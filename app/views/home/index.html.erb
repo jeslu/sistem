@@ -17,7 +17,8 @@
           <!-- CARD-->
           <%= link_to  clients_url  do %>
           <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+           <%= image_tag 'clientes.png', :class => "card-img-top", :size => "90x160" %>
+            
               <div class="card-body">
                 <h5 class="card-title"> Cientes</h5>
                 <p class="card-text">Un registro de nuestros clientes donde analizamis cada uno de ellos.</p>
@@ -35,14 +36,20 @@
 
       <div class="shadow-lg p-3 mb-5 bg-body rounded">
         <div class="col">
+
+          <%= link_to  sales_url  do %>
             <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                <%= image_tag 'ventas.png', :class => "card-img-top", :size => "90x160" %>
                 <div class="card-body">
                     <h5 class="card-title">Ventas</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">REALIZAR VENTA</a>
+                    <br>
+                    <%= link_to  "REALIZAR VENTA", new_sale_path, class:"btn btn-primary" %>
+                    
                 </div>
             </div>
+            
+            <% end %>
         </div>
       </div>
 
@@ -55,7 +62,7 @@
         <div class="col">
           <%= link_to products_url do %>
             <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
+              <%= image_tag 'productos.png', :class => "card-img-top", :size => "90x160" %>
               <div class="card-body">
                   <h5 class="card-title">Productos</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

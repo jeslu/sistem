@@ -8,7 +8,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.references :extent, null: false, foreign_key: true
       t.string :code
       t.integer :stok
-      t.decimal :precio
+      t.decimal :precio, precision: 12, scale: 3
       t.boolean :active
 
       t.timestamps

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  client: one
+  fecha: 2022-08-12
+  total: 9.99
+  active: false
+
+two:
+  user: two
+  client: two
+  fecha: 2022-08-12
+  total: 9.99
+  active: false

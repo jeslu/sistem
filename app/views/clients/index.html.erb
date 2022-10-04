@@ -1,5 +1,6 @@
 <!-- Button trigger modal -->
 
+<%= render "home/menu" %>
 
 
 <%=  form_with(url: clients_path, method: :get, class: "row g-3  justify-content-end",  data: {turbo_frame: "name"}) do |form| %>
@@ -20,21 +21,81 @@
   Nuevo cliente
 </button>
 </h1>
-<div class="shadow-lg p-3 mb-5 bg-body rounded">
-<div class="container">
-  <div id="clients">
-    <div class="row shadow">
-      <% @clients.each do |client| %>
-          <div class="col-sm shadow">
-              <%= render client %>
-              <%= link_to  "cuenta",client_acounts_path(client) %>
-          
-          </div> 
-        <% end %>
+<!--MODULO DE CLIENTES-->
+  <div class="container">
+    <div class="row align-items-start">
+      <div class="col">
+        Con
+        <div class="table-responsive">
+            <table class="table">
+                       <thead>
+                        <tr>
+                          
+                          <th scope="col">nombre</th>
+                          <th scope="col">Direccion</th>
+                          <th scope="col">Celular</th>
+                        </tr>
+                      </thead>
+                <tbody>
+                <% @client_con_deudas.each do |con|%>
+                  <tr class="table-danger">
+                    
+                    <td><%= con.name%></td>
+                    <td><%=con.direccion%></td>
+                    <td><%=con.cel %></td>
+                  </tr>
+              
+              <% end %>
+                </tbody>
+
+          </table>
+        </div>
+
+    </div>
+      <div class="col">
+
+        SIN Deudas
+
+         <div class="table-responsive">
+            <table class="table">
+                       <thead>
+                        <tr>
+                          
+                          <th scope="col">nombre</th>
+                          <th scope="col">Direccion</th>
+                          <th scope="col">Celular</th>
+                        </tr>
+                      </thead>
+                <tbody>
+                <% @client_sin_deudas.each do |sin| %>
+              <tr class="table-success">
+                
+                <td><%= sin.name%></td>
+                <td><%= sin.direccion%></td>
+                <td><%= sin.cel%></td>
+              </tr>
+              
+              <% end %>
+              
+              </tbody>
+          </table>
+        </div>
+      </div>
+    
     </div>
   </div>
-</div>
-</div>
+<!--FIN-->
+  <div id="clients">  
+    <div class="row shadow">
+        <% @clients.each do |client| %>
+             <div class="col-sm shadow">
+                <%= render client %>
+                <%= link_to  "cuenta",client_acounts_path(client) %>
+             </div> 
+          <% end %>
+      </div>
+  </div>
+
 
 
 
