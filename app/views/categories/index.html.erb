@@ -2,6 +2,19 @@
 
 <h1>Categories</h1>
 
+<%=  form_with(url: categories_path, method: :get, class: "row g-3  justify-content-end",  data: {turbo_frame: "category"}) do |form| %>
+
+    <div class="col-auto">
+        <%= form.label :query, "." %>
+      </div>
+      <div class="col-auto">
+        <%= form.text_field :query, class: "form-control", placeholder: "Buscar...." %>
+    </div>
+    <div class="col-auto">
+        <%= form.submit 'BUSCAR', class: "btn btn-warning mb-3 rounded-pill" %>
+    </div>
+<% end %>
+
 <div id="categories">
   <% @categories.each do |category| %>
     <%= render category %>

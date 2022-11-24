@@ -27,7 +27,8 @@
           <p class="alert alert-danger"><%= alert %></p>
         <% end %>
           <%= yield %>
-          </div>
+          <%= turbo_frame_tag "remote_modal" %>
+        </div>
   </div>
 
 

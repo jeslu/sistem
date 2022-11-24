@@ -1,10 +1,95 @@
-<h1>Editing sale</h1>
+<div class="shadow-lg p-3 mb-5 bg-body rounded">
+<h1>caja</h1>
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col">
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <button type="button" class="btn btn-primary">Add product</button>
+                    <button type="button" class="btn btn-success">Add client</button>
+                    
+                     <%= button_to "Cancelar", @venta, method: :delete , :class => "btn btn-danger"%>
+                </div>
+            </div>
+            <div class="col">
+            
+            </div>
+            <div class="col"><h1><strong> Importe:
+            <%= @venta.import %></strong></h1>
+            </div>
+        </div>
+    </div>
 
-<%= render "form", sale: @sale %>
-
-<br>
-
-<div>
-  <%= link_to "Show this sale", @sale %> |
-  <%= link_to "Back to sales", sales_path %>
 </div>
+<!--Agegar formularo para los productos-->
+<h2>Add product:</h2>
+<div class="shadow-lg p-3 mb-5 bg-body rounded">
+<%= form_with model: [ @venta, @venta.saledetails.build ] do |form| %>
+  <p>
+ <%= form.collection_select(:product_id, Product.all, :id, :name_p, options = {}, {:class => "form-control"})%>
+  </p>
+    
+    <p>
+    <%= form.label :cantidad%><br>
+    <%= form.number_field :cantidad %>
+  </p>
+    <p>
+    <%= form.submit %>
+  </p>
+    
+<% end %>
+
+<!--tabla de prductos agregados--->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product</th>
+      <th scope="col">cantidad</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Importe</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+  <% @venta.saledetails.each do |detail| %>
+    
+ 
+
+    <tr>
+      <th><%= detail.id%></th>
+      
+      <td><%= detail.product.try(:name_p) %></td>
+      <td><%= detail.cantidad%></td>
+      <td><%= detail.product.try(:precio)%></td>
+     
+      <td><%= detail.created_at%></td>
+    </tr>
+   <% end %>
+    <td><%= @import %></td>
+  </tbody>
+</table>
+
+
+</div>
+
+
+
+<h1>venta</h1>
+
+<%= form_with model: @venta do |form| %>
+  <div>
+    <%= form.label :Importe %><br>
+    <%= form.text_field :import %>
+  </div>
+
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :client_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,60 +1,37 @@
 <div class="shadow-lg p-3 mb-5 bg-body rounded">
-<h1>  Crear Movimiento</h1>
+      <h1>  Crear Movimiento</h1>
+      <div class="container">
+       <div class="row align-items-start">
+          <div class= "col">
+            <%= render @product %>    
+          </div>
+          <div class = "col">
+              <%= form_with model: @movimient, url: create_movimient_product_path(@product), :class => "row g-3"  do |f| %>
 
-<%= render @product %>
+                    <div class="row g-3">
+                        <div class="col">
+                          <%= f.select :tipo, options_for_select(Movimient.get_movimient_types), {}, {class: 'form-control'}%>
 
+                        </div>
+                        <div class="col">
+                          <%= f.number_field :cant, :class => "form-control", :placeholder => "Cantidad"%> 
+                        </div>
+                        
+                      </div>
+                          <div class="input-group">
+                            
+                            <%= f.text_area :coment, :class => "form-control", :placeholder => "¿Porque se realizo el movimiento?" %> 
+                         
+                          </div>
+                         <div class="input-group">
+                          <button type="submit" class="btn btn-outline-primary">GUARDAR</button>|  <%= link_to "cancelar", product_path(@product), :class => "btn btn-outline-danger" %>
 
-</div>
+                        </div>
 
-<div class="shadow-lg p-3 mb-5 bg-body rounded">
-<h2>lista de movimientos<h2>
-<%= form_with model: @movimient, url: create_movimient_product_path(@product) do |f| %>
+                      <% end %>
+          </div>
 
-
-<div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-</div>
-
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-  <span class="input-group-text" id="basic-addon2">@example.com</span>
-</div>
-
-<label for="basic-url" class="form-label">Your vanity URL</label>
-<div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-</div>
-
-<div class="input-group mb-3">
-  <span class="input-group-text">$</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-  <span class="input-group-text">.00</span>
-</div>
-
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-  <span class="input-group-text">@</span>
-  <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-</div>
-
-<div class="input-group">
-  <span class="input-group-text">With textarea</span>
-  <textarea class="form-control" aria-label="With textarea"></textarea>
-</div>
-    <div class="input-group">
-    
-         <%= f.label :type, "tipo de movimiento"%> 
-         <br>
-          <%= f.label :cant, "cantidad" %> 
-          <%= f.number_field :cant%> 
-          <%= f.label :coment, "comentario" %> 
-          <%= f.text_field :coment %> 
-          <%= f.submit %> <%= link_to "cancelar", product_path(@product) %> 
-    
-    </div>
-
-<% end %>
-
+      
+       </div>
+      </div>
 </div>

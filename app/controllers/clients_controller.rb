@@ -10,7 +10,7 @@ class ClientsController < ApplicationController
       end
       @client_sin_deudas = Client.order(updated_at: :desc).get_optener_clientes_sin_deuda
       @client_con_deudas = Client.order(updated_at: :desc).get_optener_clientes_con_deuda
-  
+    
     #@client_total = Client.total
     @client = Client.new
   end

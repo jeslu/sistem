@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :acounts, class_name: "acount", foreign_key: "user_id", dependent: :destroy
   has_many :sales, class_name: "sale", foreign_key: "user_id", dependent: :destroy
+  has_many :CuentClients, :class_name => "CuentClient", :foreign_key => "user_id"
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -1,4 +1,4 @@
-<%= form_with(model: mark) do |form| %>
+<%= form_with(model: mark, :class => "row g-3") do |form| %>
   <% if mark.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(mark.errors.count, "error") %> prohibited this mark from being saved:</h2>
@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :mark, style: "display: block" %>
-    <%= form.text_field :mark %>
+  <div class="col-md-4">
+    <%= form.label :mark %>
+    <%= form.text_field :mark , :class => "form-control", :placeholder => "ej. HP"%>
+  </div>
+
+  <div class="col-md-4">
+    <%= form.label :slug %>
+    <%= form.text_field :slug , :class => "form-control", :placeholder => "ej. hp"%>
   </div>
 
   <div>
-    <%= form.label :slug, style: "display: block" %>
-    <%= form.text_field :slug %>
+    <%= form.label :active %>
+    <%= form.check_box :active, checked: true, :class => "form-check-input" %>
   </div>
 
   <div>
-    <%= form.label :active, style: "display: block" %>
-    <%= form.check_box :active %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit 'Agregar Marca', :class => "btn btn-primary"%>
   </div>
 <% end %>

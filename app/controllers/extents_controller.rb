@@ -25,7 +25,7 @@ class ExtentsController < ApplicationController
 
     respond_to do |format|
       if @extent.save
-        format.html { redirect_to extent_url(@extent), notice: "Extent was successfully created." }
+        format.html { redirect_to products_url, notice: "Extent was successfully created." }
         format.json { render :show, status: :created, location: @extent }
       else
         format.html { render :new, status: :unprocessable_entity }

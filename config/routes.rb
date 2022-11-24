@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
+  resources :cuent_clients
   resources :sales do
-    resources :items
+    resources :saledetails
   end
+
   
   resources :products do
    member do
      get :new_movimient
      post :create_movimient  
+     delete :destroyed_movimient
    end
   end
 

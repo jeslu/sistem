@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @cuent_client %>
+
+<div>
+  <%= link_to "Edit this cuent client", edit_cuent_client_path(@cuent_client) %> |
+  <%= link_to "Back to cuent clients", cuent_clients_path %>
+
+  <%= button_to "Destroy this cuent client", @cuent_client, method: :delete %>
+</div>
+<div class="shadow-lg p-3 mb-5 bg-body rounded">Lista de productos y servicios</div>

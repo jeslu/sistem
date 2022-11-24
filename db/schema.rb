@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_08_165411) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_19_174321) do
   create_table "acounts", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "client_id", null: false
     t.date "fecha"
@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_165411) do
   create_table "categories", charset: "utf8mb4", force: :cascade do |t|
     t.string "category"
     t.string "slug"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,35 +58,34 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_165411) do
     t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
-  create_table "extents", charset: "utf8mb4", force: :cascade do |t|
-    t.string "extent"
-    t.string "slug"
+  create_table "cuent_clients", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "client_id"
+    t.bigint "user_id"
+    t.date "fecha"
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "items", charset: "utf8mb4", force: :cascade do |t|
-    t.integer "cantidad"
-    t.bigint "sale_id", null: false
-    t.bigint "product_id", null: false
+  create_table "extents", charset: "utf8mb4", force: :cascade do |t|
+    t.string "extent"
+    t.string "slug"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_items_on_product_id"
-    t.index ["sale_id"], name: "index_items_on_sale_id"
   end
 
   create_table "marks", charset: "utf8mb4", force: :cascade do |t|
     t.string "mark"
     t.string "slug"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "movimients", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "product_id", null: false
-    t.integer "type"
+    t.integer "tipo"
     t.integer "cant"
     t.text "coment"
     t.datetime "created_at", null: false
@@ -106,21 +105,27 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_165411) do
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "costo", precision: 12, scale: 2
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["extent_id"], name: "index_products_on_extent_id"
     t.index ["mark_id"], name: "index_products_on_mark_id"
   end
 
-  create_table "sales", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "client_id", null: false
-    t.date "fecha"
-    t.decimal "total", precision: 12, scale: 2
-    t.boolean "active"
+  create_table "saledetails", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "cantidad"
+    t.bigint "sale_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_sales_on_client_id"
-    t.index ["user_id"], name: "index_sales_on_user_id"
+    t.index ["product_id"], name: "index_saledetails_on_product_id"
+    t.index ["sale_id"], name: "index_saledetails_on_sale_id"
+  end
+
+  create_table "sales", charset: "utf8mb4", force: :cascade do |t|
+    t.decimal "import", precision: 12, scale: 2
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
@@ -138,12 +143,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_165411) do
 
   add_foreign_key "acounts", "clients"
   add_foreign_key "comments", "articles"
-  add_foreign_key "items", "products"
-  add_foreign_key "items", "sales"
   add_foreign_key "movimients", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "extents"
   add_foreign_key "products", "marks"
-  add_foreign_key "sales", "clients"
-  add_foreign_key "sales", "users"
+  add_foreign_key "saledetails", "products"
+  add_foreign_key "saledetails", "sales"
 end

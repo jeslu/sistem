@@ -3,10 +3,12 @@
         <div class="card">
         <h5 class="card-header">Codigo: <%= product.code%></h5>
         <div class="card-body">
-          <h5 class="card-title"><%= product.name_p %></h5>
-          <p class="card-text"><%= product.description %></p>
-          <strong>Cantidad:  <%= product.stok%> </strong> 
-          
+          <p class="card-text"> <b>Articulo:</b> <%= product.name_p %></p>
+          <p class="card-text"><b>Descripcion:</b>  <%= product.description %> <%= product.mark.mark%></p>
+          <p><b>Precio:</b> <%=number_to_currency(product.precio) %></p>
+          <p><b>Categoria:</b>   <%= product.category.category%></p>
+          <p><b>Stok:</b>  <%= product.stock%> </p>
+          <p><b>Creado:</b>   <%= product.created_at%></p>
         </div>
       </div>
 

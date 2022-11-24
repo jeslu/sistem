@@ -3,7 +3,13 @@ class CategoriesController < ApplicationController
 
   # GET /categories or /categories.json
   def index
-    @categories = Category.all
+    if params[:query].present?
+      @categories = Category.where("category LIKE ?", "%#{params[:query]}%")
+    else
+      #@categoeries = Category.order(updated_at: :desc).all
+      @categories = Category.all
+    end
+    #@categories = Category.all
   end
 
   # GET /categories/1 or /categories/1.json
@@ -25,7 +31,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to category_url(@category), notice: "Category was successfully created." }
+        format.html { redirect_to products_url, notice: "Category was successfully created." }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new, status: :unprocessable_entity }

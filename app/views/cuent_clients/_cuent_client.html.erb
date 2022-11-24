@@ -1,0 +1,63 @@
+<div id="<%= dom_id cuent_client %>">
+ 
+<div class="container">
+  <div class="row justify-content-start">
+
+    <div class="col-4">
+    </div>
+    <div class="col-4">
+      Cotizacion
+    </div>
+   
+  </div>
+
+  <div class="row justify-content-end">
+    <div class="col-4">
+    
+    </div>
+    <div class="col-4">
+    <p> N#: <%= cuent_client.id %></p>
+     
+    </div>
+  </div>
+
+  <div class="row justify-content-between">
+    <div class="col-4">
+      
+    </div>
+    <div class="col-4">
+        <p>
+          <strong>Fecha de creacion:</strong>
+          <%= cuent_client.fecha %>
+        </p>
+    </div>
+  </div>
+
+</div>
+
+
+
+  <div class="container">
+    <div class="row align-items-start">
+      <div class="col">
+        Atiende
+       <p>
+          <strong>User:</strong>
+          <%= cuent_client.User.email %>
+        </p>
+
+
+
+      </div>
+      <div class="col">
+        Cliente
+          <p>
+            <strong>Client:</strong>
+            <%= cuent_client.Client.name %>
+          </p>
+      </div>
+    </div> 
+  </div>
+ 
+
+</div>

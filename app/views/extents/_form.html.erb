@@ -1,4 +1,4 @@
-<%= form_with(model: extent) do |form| %>
+<%= form_with(model: extent, :class => "row g-3") do |form| %>
   <% if extent.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(extent.errors.count, "error") %> prohibited this extent from being saved:</h2>
@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :extent, style: "display: block" %>
-    <%= form.text_field :extent %>
+  <div class="col-md-4">
+    <%= form.label :Unidad_Medida %>
+    <%= form.text_field :extent, :class => "form-control", :placeholder => "ej. Pz" %>
   </div>
 
-  <div>
-    <%= form.label :slug, style: "display: block" %>
-    <%= form.text_field :slug %>
+  <div class="col-md-4">
+    <%= form.label :slug %>
+    <%= form.text_field :slug, :class => "form-control", :placeholder => "ej. pz" %>
   </div>
 
-  <div>
-    <%= form.label :active, style: "display: block" %>
-    <%= form.check_box :active %>
+  <div class= "form-check">
+    <%= form.label :active %>
+    <%= form.check_box :active, :class => "form-check-input", checked: true %>
   </div>
 
   <div>
