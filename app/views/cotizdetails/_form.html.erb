@@ -1,0 +1,43 @@
+<%= form_with(model: cotizdetail, url: [@cotiz, cotizdetail]) do |form| %>
+  <% if cotizdetail.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cotizdetail.errors.count, "error") %> prohibited this cotizdetail from being saved:</h2>
+
+      <ul>
+        <% cotizdetail.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :cotiz_id, style: "display: block" %>
+    <%= form.text_field :cotiz_id %>
+  </div>
+
+  <div>
+    <%= form.label :product_id, style: "display: block" %>
+    <%= form.text_field :product_id %>
+  </div>
+
+
+  <div>
+    <%= form.label :cant, style: "display: block" %>
+    <%= form.number_field :cant %>
+  </div>
+
+  <div>
+    <%= form.label :total, style: "display: block" %>
+    <%= form.text_field :total %>
+  </div>
+
+  <div>
+    <%= form.label :active, style: "display: block" %>
+    <%= form.check_box :active %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

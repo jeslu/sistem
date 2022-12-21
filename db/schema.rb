@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_19_174321) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_25_184624) do
   create_table "acounts", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "client_id", null: false
     t.date "fecha"
@@ -58,11 +58,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_19_174321) do
     t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
-  create_table "cuent_clients", charset: "utf8mb4", force: :cascade do |t|
+  create_table "cotizdetails", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "cotiz_id"
+    t.bigint "product_id"
+    t.bigint "servicio_id"
+    t.integer "cant"
+    t.decimal "total", precision: 12, scale: 2
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cotizs", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "client_id"
     t.bigint "user_id"
     t.date "fecha"
-    t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -124,6 +134,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_19_174321) do
   create_table "sales", charset: "utf8mb4", force: :cascade do |t|
     t.decimal "import", precision: 12, scale: 2
     t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "servicios", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name_serv"
+    t.string "description"
+    t.decimal "costo_serv", precision: 12, scale: 2
+    t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

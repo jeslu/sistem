@@ -3,11 +3,9 @@
 one:
   client_id: 
   user_id: 
-  fecha: 2022-11-19
-  active: false
+  fecha: 2022-11-25
 
 two:
   client_id: 
   user_id: 
-  fecha: 2022-11-19
-  active: false
+  fecha: 2022-11-25

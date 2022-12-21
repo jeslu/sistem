@@ -84,24 +84,79 @@
 
 
 <div class="shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="container">
+    <div class="row row-cols-3">
 
-<div class="container">
-  <div class="row row-cols-3">
-  <div class="shadow-lg p-3 mb-5 bg-body rounded">
-   <%= link_to  cuent_clients_url  do %>
-    <div class="col">Cotizaciones</div>
-    
-    <% end %>
-    
-    </div>
-    <div class="shadow-lg p-3 mb-5 bg-body rounded">
-    <div class="col">Orden de servicio</div>
-    </div>
-     <div class="shadow-lg p-3 mb-5 bg-body rounded">
-    <div class="col">Resepcion de Equipos</div>
+
+      <!-- SHADOW-->
+      <div class="shadow-lg p-3 mb-5 bg-body rounded">
+      <!-- COLUM-->
+        <div class="col">
+          <!-- CARD-->
+          <%= link_to  cotizs_url  do %>
+          <div class="card" style="width: 18rem;">
+           <%= image_tag 'cotizs.png', :class => "card-img-top", :size => "90x160" %>
+            
+              <div class="card-body">
+                <h5 class="card-title"> Cotizaciones</h5>
+                <p class="card-text">En este modulo podemos generar nuestras cotizaciones.</p>
+                
+                <br>
+                <%= link_to  "Realizar Cotizacion", new_cotiz_path, class:"btn btn-primary" %>
+              </div>
+          </div>
+          <%end%>
+        </div>
+      </div>
+
+
+
+
+      <div class="shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="col">
+
+          <%= link_to  sales_url  do %>
+            <div class="card" style="width: 18rem;">
+                <%= image_tag '', :class => "card-img-top", :size => "90x160" %>
+                <div class="card-body">
+                    <h5 class="card-title">orden de Servicio</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <br>
+                    <%= link_to  "REALIZAR VENTA", new_sale_path, class:"btn btn-primary" %>
+                    
+                </div>
+            </div>
+            
+            <% end %>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="col">
+          <%= link_to products_url do %>
+            <div class="card" style="width: 18rem;">
+              <%= image_tag '', :class => "card-img-top", :size => "90x160" %>
+              <div class="card-body">
+                  <h5 class="card-title">Revicion</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <br>
+                  <%= link_to  "Registrar Productos", new_product_path, class:"btn btn-primary" %>
+            </div>
+          </div>
+          <%end%>
+        </div>
+      </div>
+
+
+
     </div>
   </div>
-</div>
+
 </div>
 
 

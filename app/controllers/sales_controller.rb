@@ -1,10 +1,12 @@
 class SalesController < ApplicationController
-    before_action :set_sale, only: %i[:edit]
+    #before_action :set_cotiz, only: %i[ show edit update destroy ]
+    before_action :set_sale, only: %i[ edit update destroy]
     def index
         @ventas = Sale.all
     end
-    def new
-        @venta = Sale.create(import: 0)
+    def new 
+        @user = User.find(params[:id])
+        @venta = Sale.create(user_id: @user, import: 0)
         redirect_to edit_sale_path(@venta)
 
     end
@@ -31,5 +33,9 @@ class SalesController < ApplicationController
 
         @venta = Sale.find(params[:id])
     end
+    def sale_params
+        params.require(:sale).permit(:import, :user_id)
+    end
+    
     
 end

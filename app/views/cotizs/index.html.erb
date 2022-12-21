@@ -1,0 +1,13 @@
+
+<h1>Cotizaciones</h1>
+<div class="shadow-lg p-3 mb-5 bg-body rounded">
+<%= link_to "Crear Nueva cotizacion", new_cotiz_path %>
+  <div id="cotizs">
+  <% @cotizs.each do |cotiz| %>
+    <%= render cotiz %>
+   
+  <% end %>
+</div>
+</div>
+
+

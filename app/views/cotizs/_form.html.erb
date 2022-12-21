@@ -1,0 +1,36 @@
+
+<div class="row g-3">
+ 
+<%= form_with(model: cotiz, :class => "row g-3") do |form| %>
+  <% if cotiz.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cotiz.errors.count, "error") %> prohibited this cotiz from being saved:</h2>
+
+      <ul>
+        <% cotiz.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col">
+    <%= form.label :seleciona_un_cliente , :class => "form-label"%>
+  
+    <%= form.collection_select(:client_id, Client.all, :id, :name, options = {}, {:class => "form-select"})%>
+  </div>
+
+
+  <div class="col">
+      <%= form.label :fecha, :class => "form-label" %>
+    <%= form.date_field :fecha , :class => "form-control", :required => true %>
+    
+  </div>
+
+  <div>
+    <%= form.submit 'Generar Cotizacion', :class => "btn btn-primary" %>
+  </div>
+<% end %>
+</div>
+
+

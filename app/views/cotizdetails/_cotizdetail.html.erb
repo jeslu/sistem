@@ -1,0 +1,36 @@
+<div id="<%= dom_id cotizdetail %>">
+  <p>
+    <strong>Cotiz:</strong>
+    <%= cotizdetail.cotiz_id %>
+  </p>
+<% if cotizdetail.servicio_id.blank?%>
+  <p>
+    <strong>Product:</strong>
+    <%= cotizdetail.Product.name_p %>
+  </p>
+    <p>
+    <strong>Precio:</strong>
+    <%= cotizdetail.Product.precio %>
+  </p>
+  <%end%>
+  <p>
+    <strong>Servicio:</strong>
+    <%= cotizdetail.servicio_id %>
+  </p>
+
+  <p>
+    <strong>Cant:</strong>
+    <%= cotizdetail.cant %>
+  </p>
+
+  <p>
+    <strong>Total:</strong>
+    <%= cotizdetail.total %>
+  </p>
+
+  <p>
+    <strong>Active:</strong>
+    <%= cotizdetail.active %>
+  </p>
+
+</div>

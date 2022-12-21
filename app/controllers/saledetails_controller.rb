@@ -5,9 +5,9 @@ class SaledetailsController < ApplicationController
     
     def create
         @sale = Sale.find(params[:sale_id])
-        @product = Product.find(params[:product_id])
+        #@product = Product.find(params[:product_id])
         @Saledetail = @sale.saledetails.create(saledetail_params)
-        @import = (@product.pricio * params[:cantidad].to_i)
+       # @import = (@product.pricio * params[:cantidad].to_i)
         redirect_to edit_sale_path(@sale)
       end
 

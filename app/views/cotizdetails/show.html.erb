@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @cotizdetail %>
+
+<div>
+  <%= link_to "Edit this cotizdetail", edit_cotiz_cotizdetail_path(@cotizdetail) %> |
+  <%= link_to "Back to cotizdetails", cotiz_cotizdetails_path %>
+
+  <%= button_to "Destroy this cotizdetail", [@cotiz, @cotizdetail], method: :delete %>
+</div>

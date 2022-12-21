@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Cotizdetails</h1>
+
+<div id="cotizdetails">
+  <% @cotizdetails.each do |cotizdetail| %>
+    <%= render cotizdetail %>
+    <p>
+      
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New cotizdetail", new_cotiz_cotizdetail_path %>

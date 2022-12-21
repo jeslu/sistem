@@ -1,6 +1,6 @@
 require "test_helper"
 
-class CuentClientTest < ActiveSupport::TestCase
+class CotizdetailTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -1,0 +1,187 @@
+<h1>Cotizacion</h1>
+
+<div class="shadow-lg p-3 mb-5 bg-body rounded">
+
+    <div class="row">
+      <div class="col-9">N°:   <strong><%= @cotiz.id%></strong></div>
+      <div class="col-6">Datos Empresa<br><%= @cotiz.user.email %> </div>
+      <div class="col-6"><strong>Datos del Cliente</strong><br><b>Nombre:</b> <%=@cotiz.client.name%><br><b>Direccion:</b> <%=@cotiz.client.direccion%><br> <b>Tel:</b> <%=@cotiz.client.cel%></div>
+    </div>
+
+    <%= link_to "Edit this cotiz", edit_cotiz_path(@cotiz) %> |
+    <%= link_to "Back to cotizs", cotizs_path %>
+
+    <%= button_to "Destroy this cotiz", @cotiz, method: :delete %>
+  </div>
+<div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Servicios">
+  Add Productos
+</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Productos">
+  Add Servicios
+</button>
+
+ 
+
+<div class="shadow-lg p-3 mb-5 bg-body rounded">
+    <div class= "table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">costo</th>
+            <th scope="col">total</th>
+          </tr>
+        </thead>
+        <tbody>
+      
+        <% @cotiz.cotizdetails.each do |item| %>
+       
+               
+         
+            
+            <% if item.product_id.blank?%>
+              <tr>
+                <th scope="row"><%= item.cant%></th>
+                <td><%= item.servicio.name_serv %></td>
+                <td><%= item.servicio.costo_serv %></td>
+              
+                <td><%= item.get_valor_total %></td>
+                 <td> <%= button_to "eliminar", [@cotiz,item], method: :delete, data: { confirm: 'Esta seguro de eliminar deuda Pagada?' }, :class => "btn btn-danger" %> </td>
+                
+              </tr>
+            <% end %>
+
+            <% if item.servicio_id.blank?%>
+                 <tr>
+                <th scope="row"><%= item.cant%></th>
+                <td><%= item.product.name_p%></td>
+                <td><%= item.product.precio%></td>
+                
+                  <td><%= item.get_valor_total %></td>
+                  <td> <%= button_to "eliminar", [@cotiz,item], method: :delete, data: { confirm: 'Esta seguro de eliminar deuda Pagada?' }, :class => "btn btn-danger" %> </td>
+                
+              </tr>
+            <% end %>
+            
+            
+            
+            
+ 
+        <% end %>
+        <tr>
+            <td><td>
+            <td><h5>Total</h5></td>
+             <td><strong><h5><%= @cotiz.get_total %></h5></strong></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal PRODUCTO -->
+<div class="modal fade" id="Servicios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">PRODUCTO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <%= form_with model: [ @cotiz, @cotiz.cotizdetails.build ] do |form| %>
+            <div>
+              <%= form.label :product_id, style: "display: block" %>
+              
+              <%= form.collection_select(:product_id, Product.all, :id, :name_p, options = {}, {:class => "form-control"})%>
+            </div>
+
+
+            <div>
+              <%= form.label :cant %>
+              <%= form.number_field :cant, :class => "form-control" %>
+            </div>
+
+            <div>
+              <%= form.label :total %>
+              <%= form.text_field :total %>
+            </div>
+
+            <div>
+              <%= form.label :active %>
+              <%= form.check_box :active %>
+            </div>
+
+            <div>
+              <%= form.submit %>
+            </div>
+          <%end%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal  SERVICIO-->
+<div class="modal fade" id="Productos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">SERVICIO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <%= form_with model: [ @cotiz, @cotiz.cotizdetails.build ] do |form| %>
+            <div>
+              <%= form.label :servicio_id, style: "display: block" %>
+              
+              <%= form.collection_select(:servicio_id, Servicio.all, :id, :name_serv, options = {}, {:class => "form-control"})%>
+            </div>
+
+
+            <div>
+              <%= form.label :cant, style: "display: block" %>
+              <%= form.number_field :cant %>
+            </div>
+
+            <div>
+              <%= form.label :total, style: "display: block" %>
+              <%= form.text_field :total%>
+            </div>
+
+            <div>
+              <%= form.label :active, style: "display: block" %>
+              <%= form.check_box :active %>
+            </div>
+
+            <div>
+              <%= form.submit %>
+            </div>
+          <%end%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

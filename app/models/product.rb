@@ -2,8 +2,12 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :mark
   belongs_to :extent
-  has_many :saledetails
   has_many :movimients, dependent: :destroy
+  #association de ventas
+  has_many :saledetails
+  #association de cotizaciones
+  has_many :cotizs, through: :cotizadetails
+
 
 
   #logica de stock

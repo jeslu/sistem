@@ -1,7 +1,7 @@
 class Client < ApplicationRecord
   self.table_name = "clients"
     has_many :acounts, dependent: :destroy
-    has_many :CuentClients, :class_name => "CuentClient", :foreign_key => "client_id"
+    has_many :cotizs, :class_name => "Cotiz", :foreign_key => "client_id"
 
     validates :name, :apellido, :cel, :direccion, presence:   { message: ':   el campo no tiene que estar en blanco' }
     validates :name, :apellido, presence: {

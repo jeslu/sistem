@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  resources :cuent_clients
+  resources :cotizs do
+    resources :cotizdetails
+    
+  end
+  
+  resources :servicios
+ 
+
+
   resources :sales do
     resources :saledetails
   end
