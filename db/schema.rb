@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_25_184624) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_04_214715) do
   create_table "acounts", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "client_id", null: false
     t.date "fecha"
@@ -116,24 +116,29 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_25_184624) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "costo", precision: 12, scale: 2
+    t.bigint "supplier_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["extent_id"], name: "index_products_on_extent_id"
     t.index ["mark_id"], name: "index_products_on_mark_id"
+    t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end
 
   create_table "saledetails", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "sale_id"
+    t.bigint "product_id"
     t.integer "cantidad"
-    t.bigint "sale_id", null: false
-    t.bigint "product_id", null: false
+    t.decimal "importe", precision: 12, scale: 2
+    t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_saledetails_on_product_id"
-    t.index ["sale_id"], name: "index_saledetails_on_sale_id"
   end
 
   create_table "sales", charset: "utf8mb4", force: :cascade do |t|
-    t.decimal "import", precision: 12, scale: 2
     t.bigint "user_id"
+    t.bigint "client_id"
+    t.date "fecha"
+    t.decimal "import", precision: 12, scale: 2
+    t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -143,6 +148,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_25_184624) do
     t.string "description"
     t.decimal "costo_serv", precision: 12, scale: 2
     t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "suppliers", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name_pro"
+    t.string "cel_pro"
+    t.string "direcction"
+    t.string "email_pro"
+    t.text "nota"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -166,6 +181,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_25_184624) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "extents"
   add_foreign_key "products", "marks"
-  add_foreign_key "saledetails", "products"
-  add_foreign_key "saledetails", "sales"
+  add_foreign_key "products", "suppliers"
 end

@@ -62,9 +62,7 @@ class CotizdetailsController < ApplicationController
 
   private
   # optener las id de cotiz
-      def set_product
-        @product = Product.find(params[:product_id])
-     end
+
   
     def set_cotiz
       @cotiz = Cotiz.find(params[:cotiz_id])

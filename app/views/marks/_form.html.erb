@@ -1,7 +1,7 @@
 <%= form_with(model: mark, :class => "row g-3") do |form| %>
   <% if mark.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(mark.errors.count, "error") %> prohibited this mark from being saved:</h2>
+      <h2><%= pluralize(mark.errors.count, "error") %> Prohibido que se guarde esta marca:</h2>
 
       <ul>
         <% mark.errors.each do |error| %>

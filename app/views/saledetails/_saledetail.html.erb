@@ -1,0 +1,12 @@
+<div id="<%= dom_id saledetail %>">
+
+    <tr>
+      <th scope="row"><%= saledetail.product.name_p %></th>
+      <td><%= saledetail.cantidad %></td>
+      <td><%= saledetail.product.precio %></td>
+      <td><%= saledetail.importe %></td>
+      <td><%= link_to "ver", [@sale, saledetail], target: '_top' %> </td>
+       <td> <%= button_to "Eliminar", [@sale, saledetail], method: :delete %></td>
+    </tr>
+</div>
+

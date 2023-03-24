@@ -34,13 +34,13 @@
                            
     <%= form.collection_select(:extent_id, Extent.all, :id, :extent, options = {}, {:class => "form-control"})%>
   </div>
-
-
-
-  <div class= "col-md-4">
-    <%= form.label :stok %>
-    <%= form.number_field :stock, :class => "form-control" %>
+  <div  class = "col-md-4">
+    <%= form.label :Proveedor %>
+                           
+    <%= form.collection_select(:supplier_id, Supplier.all, :id, :name_pro, options = {}, {:class => "form-control"})%>
   </div>
+
+
 
  <div class = "col-md-4">
     <%= form.label :costo %>

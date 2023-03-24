@@ -10,6 +10,8 @@ class Cotiz < ApplicationRecord
         cotizdetails.to_a.sum {|cotizdetail| cotizdetail.get_valor_total}
         
     end
+
+   
         
   
 end

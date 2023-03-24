@@ -1,31 +1,77 @@
-<h1>ventas realizadas</h1>
 
-<div class="table-responsive">
-  <table class="table">
-     
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Importe</th>
-      <th scope="col">Fecha</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-  <% @ventas.each do |venta| %>
-        
-    <tr>
-     
-      <th scope="row"><%= link_to venta.id, edit_sale_path(venta) %></th>
-      <td><%= venta.import%></td>
-      <td><%= venta.created_at %></td>
-      
-    </tr>    
-  <% end %>
+<h1>Sales</h1>
 
-  
-  </tbody>
 
-    
-  </table>
+
+<%= link_to "Realizar Nueva venta", new_sale_path %>
+
+
+
+
+<div class="container">
+  <div class="row justify-content-start shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="col-6 shadow-lg p-3 mb-5 bg-body rounded">
+
+<div class= "table-responsive">
+
+
+        <table class="table">
+          <thead>
+            <tr>
+              
+              <th scope="col">user</th>
+              <th scope="col">cliente</th>
+              <th scope="col">fecha</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @sales.each do |sale| %>
+           <% if sale.client.nil?%>
+             <% else %>
+            <%= render sale %>
+            
+            <% end %>
+            
+          <% end %>
+
+          </tbody>
+        </table>
 </div>
+
+
+
+        </div>
+<div class="col-6 shadow-lg p-3 mb-5 bg-body rounded">
+
+        <table class="table">
+          <thead>
+            <tr>
+              
+              <th scope="col">user</th>
+             
+              <th scope="col">fecha</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @sales.each do |sale| %>
+           <% if sale.client.nil?%>
+           
+            <%= render sale %>
+            <% else %>
+            
+            <% end %>
+            
+          <% end %>
+
+          </tbody>
+        </table>
+
+
+
+        </div>
+
+  </div>
+  </div>
+

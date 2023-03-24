@@ -1,0 +1,131 @@
+<div class="row">
+  <div class="col-6">
+    <%= link_to "Regresar", sales_path %>
+  </div>
+    <div class="col-6">
+      <div class="row">   
+            <div class="col-6">
+            <%= link_to "Editar", edit_sale_path(@sale) %>
+          </div>
+           <div class="col-3">
+                  <%= button_to "Cancelar venta", @sale, method: :delete, class: "btn btn-danger" %>
+          </div>
+      </div>
+
+    </div>
+</div>
+
+
+<div class="row justify-content-start shadow-lg p-3 mb-5 bg-body rounded">
+  <strong>Folio: <%= link_to @sale.id %></strong>
+    <div class="col-3 shadow-lg p-3 mb-5 bg-body rounded">
+      Atiende:
+      <%= @sale.user.email%>
+    </div>
+    <div class="col-3 shadow-lg p-3 mb-5 bg-body rounded">
+       Cliente;
+       <% if @sale.client.nil? %>
+       Sin cliente
+       <% else %>
+       <%= @sale.client.name %>
+       <% end %>
+       
+    </div>
+    <div class="col-6 shadow-lg p-3 mb-5 bg-body rounded">
+            <h1>Total:
+            <%= number_to_currency(@sale.get_sale_total) %>
+
+            </h1>
+    </div>
+    <div class="col-6">
+    <div class="table-responsive">
+ <table class="table">
+  <thead>
+    <tr>
+     
+      <th scope="col">Producto</th>
+      <th scope="col">precio</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">importe</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @sale.saledetails.each do |item| %>
+
+   <% if item.product_id.nil?%>
+    <%else%>
+     <tr>
+      
+          <th scope="row"><%= item.product.name_p%></th>
+          <td><%= item.product.precio%></td>
+          <td><%= item.cantidad%></td>
+          <td><%= number_to_currency(item.get_import)%></td>
+           <td> <%= button_to "X", [@sale,item], method: :delete, data: { confirm: 'Esta seguro de eliminar deuda Pagada?' }, :class => "btn btn-danger" %> </td>
+        </tr>
+     <% end %>
+   <% end %>
+   
+  
+  </tbody>
+  </table>
+</div>
+</div>
+
+<div class="col-6">
+<%= form_with model: [ @sale, @sale.saledetails.build ] do |form| %>
+
+  
+  <div class="row justify-content-start shadow-lg p-3 mb-5 bg-body rounded">
+          <div class="col-4">
+            <div>
+                <%= form.label :productos, class: "" %>    
+                <%= form.collection_select(:product_id, Product.all, :id, :name_p, options = {}, {:class => "form-control"})%>
+              </div>
+          </div>
+         <div class="col-2">
+              <div>
+                <%= form.label :Cantidad, class: "" %>    
+                <%= form.number_field :cantidad, value: 1, class: "form-control" %>
+              </div>
+          </div>
+
+           <div class="col-1">
+
+            <div>
+              <%= form.label :active, style: "display: block" %>
+              <%= form.check_box :active, checked: true, class: ""%>
+            </div>
+
+           </div>
+             <div class="col-1">
+                <div>
+                  <%= form.submit 'Add'  %>
+                </div>
+             </div>
+  </div>
+
+
+
+<% end %>
+
+</div>
+
+    <!--Formulario para add productos-->
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+

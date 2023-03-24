@@ -1,6 +1,7 @@
 class Cotizdetail < ApplicationRecord
+    self.table_name = "cotizdetails"
     belongs_to :cotiz, class_name: "Cotiz", foreign_key: "cotiz_id"
-    belongs_to :product, class_name: "Product", foreign_key: "product_id",optional: true
+    belongs_to :product, class_name: "Product", foreign_key: "product_id", optional: true
     belongs_to :servicio, class_name: "Servicio", foreign_key: "servicio_id", optional: true
     
 
@@ -22,6 +23,7 @@ class Cotizdetail < ApplicationRecord
         end
     end
     
+
   
     
 end

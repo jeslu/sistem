@@ -1,41 +1,70 @@
 class SalesController < ApplicationController
-    #before_action :set_cotiz, only: %i[ show edit update destroy ]
-    before_action :set_sale, only: %i[ edit update destroy]
-    def index
-        @ventas = Sale.all
+  before_action :set_sale, only: %i[ show edit update destroy ]
+
+  # GET /sales or /sales.json
+  def index
+    @sales = Sale.all
+  end
+
+  # GET /sales/1 or /sales/1.json
+  def show
+  end
+
+  # GET /sales/new
+  def new
+    @sale = Sale.new
+  end
+
+  # GET /sales/1/edit
+  def edit
+  end
+
+  # POST /sales or /sales.json
+  def create
+    @sale = current_user.sales.new(sale_params)
+      
+    respond_to do |format|
+      if @sale.save
+        format.html { redirect_to edit_sale_url(@sale), notice: "Venta fue creada con exitos." }
+        format.json { render :show, status: :created, location: @sale }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @sale.errors, status: :unprocessable_entity }
+      end
     end
-    def new 
-        @user = User.find(params[:id])
-        @venta = Sale.create(user_id: @user, import: 0)
-        redirect_to edit_sale_path(@venta)
+  end
 
+  # PATCH/PUT /sales/1 or /sales/1.json
+  def update
+    respond_to do |format|
+      if @sale.update(sale_params)
+        format.html { redirect_to sale_url(@sale), notice: "Sale was successfully updated." }
+        format.json { render :show, status: :ok, location: @sale }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @sale.errors, status: :unprocessable_entity }
+      end
     end
+  end
 
-    def edit
-        @venta = Sale.find(params[:id])
-        @product_venta = @venta.saledetails
+  # DELETE /sales/1 or /sales/1.json
+  def destroy
+    @sale.destroy
+
+    respond_to do |format|
+      format.html { redirect_to sales_url, notice: "Sale was successfully destroyed." }
+      format.json { head :no_content }
     end
+  end
 
-    def destroy
-        @venta = Sale.find(params[:id])
-        @venta.destroy
-            respond_to do |format|
-                format.html {redirect_to sales_url, notice: "jajaja ya se elimino"  }
-                format.json {head :no_conten}
-            end    
-        
-    end
-    
-
-    private
-
+  private
+    # Use callbacks to share common setup or constraints between actions.
     def set_sale
+      @sale = Sale.find(params[:id])
+    end
 
-        @venta = Sale.find(params[:id])
-    end
+    # Only allow a list of trusted parameters through.
     def sale_params
-        params.require(:sale).permit(:import, :user_id)
+      params.require(:sale).permit(:user_id, :client_id, :fecha, :import, :active)
     end
-    
-    
 end

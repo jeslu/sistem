@@ -1,0 +1,10 @@
+<h1>Editing saledetail</h1>
+
+<%= render "form", saledetail: @saledetail, sale: @sale%>
+
+<br>
+
+<div>
+  <%= link_to "Show this saledetail", [@sale, @saledetail] %> |
+  <%= link_to "Back to saledetails", sale_saledetails_path(@sale) %>
+</div>

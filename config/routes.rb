@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  
   resources :cotizs do
     resources :cotizdetails
     
   end
   
   resources :servicios
+  resources :suppliers
  
 
 

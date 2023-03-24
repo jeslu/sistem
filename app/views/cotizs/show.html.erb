@@ -3,15 +3,17 @@
 <div class="shadow-lg p-3 mb-5 bg-body rounded">
 
     <div class="row">
-      <div class="col-9">N°:   <strong><%= @cotiz.id%></strong></div>
-      <div class="col-6">Datos Empresa<br><%= @cotiz.user.email %> </div>
-      <div class="col-6"><strong>Datos del Cliente</strong><br><b>Nombre:</b> <%=@cotiz.client.name%><br><b>Direccion:</b> <%=@cotiz.client.direccion%><br> <b>Tel:</b> <%=@cotiz.client.cel%></div>
+      <div class="col-9">N°:   <strong><%= @cotiz.id%>  </strong></div>
+      <div class="col-3"> <strong>Fecha:</strong> <%= @cotiz.fecha%></div>
+      
+      <div class="col-6">Encargado<br><%= @cotiz.user.email %> </div>
+      <div class="col-6"><br><strong>Datos del Cliente</strong><br><b>Nombre:</b> <%=@cotiz.client.name%><br><b>Direccion:</b> <%=@cotiz.client.direccion%><br> <b>Tel:</b> <%=@cotiz.client.cel%></div>
     </div>
 
-    <%= link_to "Edit this cotiz", edit_cotiz_path(@cotiz) %> |
-    <%= link_to "Back to cotizs", cotizs_path %>
+    <%= link_to "Edit ", edit_cotiz_path(@cotiz) %> |
+    <%= link_to "Regresar", cotizs_path %>
 
-    <%= button_to "Destroy this cotiz", @cotiz, method: :delete %>
+    <%= button_to "Eliminar Cotizacion", @cotiz, method: :delete, class: "btn btn-danger" %>
   </div>
 <div>
 
@@ -67,10 +69,6 @@
               </tr>
             <% end %>
             
-            
-            
-            
- 
         <% end %>
         <tr>
             <td><td>
@@ -106,33 +104,30 @@
             <div>
               <%= form.label :product_id, style: "display: block" %>
               
-              <%= form.collection_select(:product_id, Product.all, :id, :name_p, options = {}, {:class => "form-control"})%>
+              <%= form.collection_select(:product_id, Product.all, :id, :select_attributes, options = {}, {:class => "form-control"})%>
             </div>
 
 
             <div>
               <%= form.label :cant %>
-              <%= form.number_field :cant, :class => "form-control" %>
+              <%= form.number_field :cant, value: 1, :class => "form-control" %>
             </div>
 
-            <div>
-              <%= form.label :total %>
-              <%= form.text_field :total %>
-            </div>
+           
 
             <div>
               <%= form.label :active %>
-              <%= form.check_box :active %>
+              <%= form.check_box :active, checked: true %>
             </div>
 
             <div>
-              <%= form.submit %>
+              <%= form.submit 'Add', :class => "btn btn-primary" %>
             </div>
           <%end%>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        
       </div>
     </div>
   </div>
@@ -150,33 +145,30 @@
             <div>
               <%= form.label :servicio_id, style: "display: block" %>
               
-              <%= form.collection_select(:servicio_id, Servicio.all, :id, :name_serv, options = {}, {:class => "form-control"})%>
+              <%= form.collection_select(:servicio_id, Servicio.all, :id, :select_attributes, options = {}, {:class => "form-control"})%>
             </div>
 
 
             <div>
               <%= form.label :cant, style: "display: block" %>
-              <%= form.number_field :cant %>
+              <%= form.number_field :cant, value: 1, class: "form-control" %>
             </div>
 
-            <div>
-              <%= form.label :total, style: "display: block" %>
-              <%= form.text_field :total%>
-            </div>
+           
 
             <div>
               <%= form.label :active, style: "display: block" %>
-              <%= form.check_box :active %>
+              <%= form.check_box :active, checked: true %>
             </div>
 
             <div>
-              <%= form.submit %>
+              <%= form.submit 'Add', :class => "btn btn-primary" %>
             </div>
           <%end%>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        
       </div>
     </div>
   </div>

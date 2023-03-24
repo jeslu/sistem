@@ -23,7 +23,7 @@
 
   <div class="col">
       <%= form.label :fecha, :class => "form-label" %>
-    <%= form.date_field :fecha , :class => "form-control", :required => true %>
+    <%= form.date_field :fecha , value:  Date.today , :class => "form-control", :required => true %>
     
   </div>
 

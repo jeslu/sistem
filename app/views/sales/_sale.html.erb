@@ -1,0 +1,18 @@
+<div id="<%= dom_id sale %>">
+ 
+
+   <tr>
+      
+      <% if sale.client.nil?%>
+      <td><%= sale.user.email %></td>
+      <td><%= sale.fecha %></td>
+      <td><%= number_to_currency(sale.get_sale_total) %></td>
+      <% else %>
+      <td><%= sale.user.email %></td>
+      <td><%= sale.client.name %></td>
+      <td><%= sale.fecha %></td>
+       <td><%= number_to_currency(sale.get_sale_total) %></td>
+      <% end %>
+       <td><%= link_to "Show", sale %></td>
+    </tr>
+</div>
