@@ -49,9 +49,9 @@
               <tr>
                 <th scope="row"><%= item.cant%></th>
                 <td><%= item.servicio.name_serv %></td>
-                <td><%= item.servicio.costo_serv %></td>
+                <td><%= number_to_currency(item.servicio.costo_serv) %></td>
               
-                <td><%= item.get_valor_total %></td>
+                <td><%= number_to_currency(item.get_valor_total) %></td>
                  <td> <%= button_to "eliminar", [@cotiz,item], method: :delete, data: { confirm: 'Esta seguro de eliminar deuda Pagada?' }, :class => "btn btn-danger" %> </td>
                 
               </tr>
@@ -61,9 +61,9 @@
                  <tr>
                 <th scope="row"><%= item.cant%></th>
                 <td><%= item.product.name_p%></td>
-                <td><%= item.product.precio%></td>
+                <td><%= number_to_currency(item.product.precio)%></td>
                 
-                  <td><%= item.get_valor_total %></td>
+                  <td><%= number_to_currency(item.get_valor_total) %></td>
                   <td> <%= button_to "eliminar", [@cotiz,item], method: :delete, data: { confirm: 'Esta seguro de eliminar deuda Pagada?' }, :class => "btn btn-danger" %> </td>
                 
               </tr>
@@ -73,7 +73,7 @@
         <tr>
             <td><td>
             <td><h5>Total</h5></td>
-             <td><strong><h5><%= @cotiz.get_total %></h5></strong></td>
+             <td><strong><h5><%= number_to_currency(@cotiz.get_total) %></h5></strong></td>
             </tr>
         </tbody>
       </table>

@@ -26,20 +26,15 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit 'Generar Venta'%>
   </div>
 <% end %>
-
-<h1>Editing sale</h1>
-
-
-
 <br>
 
 
 <div>
-  <%= link_to "Show this sale", @sale %> |
-  <%= link_to "Back to sales", sales_path %>
+  <%= link_to "Ver", @sale %> |
+  <%= link_to "Regresar", sales_path %>| <%= button_to "Cancelar venta", @sale, method: :delete, class: "btn btn-danger" %>
 </div>
 
  <%= form_with model: [ @sale, @sale.saledetails.build ] do |form| %>
@@ -52,3 +47,7 @@
 
 
 <%= turbo_frame_tag 'sale-details', src: sale_saledetails_path(@sale) %>
+
+
+<!-- estilo de ventas  -->
+

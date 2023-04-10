@@ -10,4 +10,7 @@ class Sale < ApplicationRecord
         saledetails.to_a.sum {|saledetail| saledetail.get_import}
         
     end
+    #calcular el stock
+    
+
 end

@@ -76,10 +76,10 @@
 
   
   <div class="row justify-content-start shadow-lg p-3 mb-5 bg-body rounded">
-          <div class="col-4">
+          <div class="col-6">
             <div>
                 <%= form.label :productos, class: "" %>    
-                <%= form.collection_select(:product_id, Product.all, :id, :name_p, options = {}, {:class => "form-control"})%>
+                <%= form.collection_select(:product_id, Product.all, :id,  :select_attributes, options = {}, {:class => "form-control"})%>
               </div>
           </div>
          <div class="col-2">

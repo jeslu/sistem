@@ -25,7 +25,7 @@ class SalesController < ApplicationController
       
     respond_to do |format|
       if @sale.save
-        format.html { redirect_to edit_sale_url(@sale), notice: "Venta fue creada con exitos." }
+        format.html { redirect_to sale_url(@sale), notice: "Venta fue creada con exitos." }
         format.json { render :show, status: :created, location: @sale }
       else
         format.html { render :new, status: :unprocessable_entity }

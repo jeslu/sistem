@@ -1,4 +1,5 @@
 class Movimient < ApplicationRecord
+  self.table_name = "movimients"
   belongs_to :product
   
 

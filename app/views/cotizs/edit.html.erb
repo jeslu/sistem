@@ -7,4 +7,6 @@
 <div>
   <%= link_to "Show this cotiz", @cotiz %> |
   <%= link_to "Regresar", cotizs_path %>
+
+    <%= button_to "Eliminar Cotizacion", @cotiz, method: :delete, class: "btn btn-danger" %>
 </div>
