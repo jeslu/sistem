@@ -1,137 +1,74 @@
 
-<div class="container-xxl">
-<div class="shadow-lg p-3 mb-5 bg-body rounded">
-
-<div class="container">
-  <div class="row row-cols-4">
-    <div class="col"><%= link_to  "Agregar Categorias", new_category_path, class:"btn btn-primary" %></div>
-    <div class="col"><%= link_to  "Agregar marcas", new_mark_path, class:"btn btn-primary" %></div>
-    <div class="col"><%= link_to  "Agregar Umedidas", new_extent_path, class:"btn btn-primary" %></div>
-    <div class="col"><%= link_to  "Agregar Proveedor", new_supplier_path, class:"btn btn-primary" %></div>
-   
-  </div>
-</div>
-
-</div>
-
-<h1>Products</h1>
 
 
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>  
+    
 
-<!--FORMULARIO DE BUSQUEDA DE procuctis-->
-<%=  form_with(url: products_path, method: :get, class: "row g-3  justify-content-end",  data: {controller: "search-form", turbo_frame: "name_p", turbo_action: "advance" }) do |form| %>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+      <meta name="generator" content="Hugo 0.122.0">
+      <title>Album example · Bootstrap v5.3</title>
+
+      <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+
+      
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+  </head>
+  <body>
+    
+    <div class="container shadow-lg p-3 mb-6 bg-body rounded">
+      <div class="row row-cols-6">
+          <%= link_to t('.Todos'), products_path %>
+          <%= render partial: 'category', collection: @categories %>
+          
+      </div>
+    </div>
+    <main>
+
+         
+
+      <h4><%= t('.title')%></h4>
+      <%= link_to "New product", new_product_path, "data-controller": "turbo" %>
+      <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+<%=  form_with(url: products_path, method: :get, class: "row g-3  justify-content-end",  data: {turbo_frame: "code"}) do |form| %>
 
     <div class="col-auto">
         <%= form.label :query, "." %>
       </div>
       <div class="col-auto">
-        <%= form.text_field :query, class: "form-control", data: {action: "input->search-form#search"}, placeholder: "Buscar...." %>
+        <%= form.text_field :query, class: "form-control", placeholder: "Buscar...." %>
     </div>
     <div class="col-auto">
         <%= form.submit 'BUSCAR', class: "btn btn-warning mb-3 rounded-pill" %>
     </div>
 <% end %>
+       
 
+          <div  class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                
+            <%= render partial: 'product', collection: @products %>
+          
+          </div>
+        </div>
+      </div>
 
+    </main>
 
-
-
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar por codigo..">
-
-
-
-
-<div class="shadow-lg p-3 mb-5 bg-body rounded">
-
-
-<div class="table-responsive">
-
-  <table id='myTable' class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">code</th>
-      <th scope="col">nombre</th>
-      <th scope="col">Description</th>
-      <th scope="col">stok</th>
-      <th scope="col">precio</th>
+    <footer class="text-body-secondary py-5">
+    <div class="container">
+      <p class="float-end mb-1">
+        <a href="#">Back to top</a>
+      </p>
     
-    </tr>
-  </thead>
-  <tbody>
-
-<div id="products">
-  <% @products.each do |product| %>
-  <% if product.stock >= 1 %>
-  
- 
-  
-    <tr class= "table-success">
-      <th scope="row"> <%= product.id %></th>
-     
-      <td><%= link_to product.code, (product)%></td>
-      <td><%= product.name_p %></td>
-      <td><%= product.description %></td>
-      <td> <%= product.stock %></td>
-      <td> <%= number_to_currency(product.precio) %></td>
-
-      <td><%= link_to "edit", edit_product_path(product), "data-controller": "turbo"%></td>
-  
-      
-    </tr>
-    <% else %>
-          <tr class= "table-danger">
-      <th scope="row"> <%= product.id %></th>
-     
-      <td><%= link_to product.code, product%></td>
-      <td><%= product.name_p %></td>
-      <td><%= product.description %></td>
-      <td> <%= product.stock %></td>
-      <td> <%= number_to_currency(product.precio) %></td>
-       <td><%= link_to "edit", edit_product_path(product), "data-controller": "turbo"%></td>
-  
-      
-    </tr>
-
-
-   <% end %>
-  <% end %>
-</div>
-</tbody>
-</table>   
-
-<%= link_to "New product", new_product_path, "data-controller": "turbo" %>
-
-
-<!-- Button trigger modal -->
-
-
-
-
-</div>
-
-
-</div>
-
-
-
-<script>
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-</script>
+    </div>
+    </footer>
+   
+  </body>
+</html>

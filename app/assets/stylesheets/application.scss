@@ -1,7 +1,23 @@
 // here your custom bootstrap variables...
+
 @import "bootstrap";
 
 h1,h3 {
     font-size: 45px;
     text-align: center;
   }
+  h4{
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    text-align: center;
+    color: rgb(31, 12, 100);
+    
+  }
+  .disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    
+}
+.color1 {
+ color: rgb(26, 26, 87);
+}

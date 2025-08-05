@@ -1,165 +1,168 @@
-  
-<%= render "home/menu" %>
 
-<h1>Sistema CodeWeb</h1>
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>  
+    
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+      <meta name="generator" content="Hugo 0.122.0">
+      <title>Album example · Bootstrap v5.3</title>
+
+      <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+
+      
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+    
+
+     
+
+    
+  </head>
+  <body>
+
+    <main>
 
 
+      <h1>Sistema CodeWeb</h1>
 
-<div class="shadow-lg p-3 mb-5 bg-body rounded">
+      <div class="album py-5 bg-body-tertiary">
+        <div class="container">
 
-  <div class="container">
-    <div class="row row-cols-3">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
 
-      <!-- SHADOW-->
-      <div class="shadow-lg p-3 mb-5 bg-body rounded">
-      <!-- COLUM-->
-        <div class="col">
-          <!-- CARD-->
-          <%= link_to  clients_url  do %>
-          <div class="card" style="width: 18rem;">
-           <%= image_tag 'clientes.png', :class => "card-img-top", :size => "90x160" %>
-            
-              <div class="card-body">
-                <h5 class="card-title"> Cientes</h5>
-                <p class="card-text">Un registro de nuestros clientes donde analizamis cada uno de ellos.</p>
-                
-                <br>
-                <%= link_to  "Registrar clientes", new_client_path, class:"btn btn-primary" %>
+            <div class="col">
+              <div class="card shadow-sm shadow-lg p-3 mb-5 bg-body rounded">
+               <%= link_to  clients_url  do %>
+                  <%= image_tag 'clientes.png', :class => "card-img-top", :size => "50x160" %>
+                <div class="card-body">
+                <h5 class="card-title"> CLIENTES</h5>
+                  <p class="card-text">Un modulo donde puede realizar registro y estatus de cada clientes.</p>
+                  <% end %>
+                     <br>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                         <%= link_to  "REGISTRAR CLIENTES", new_client_path, class:"btn btn-sm btn-outline-primary " %>
+                        
+                    </div>
+                    <small class="text-body-secondary">registrados:</small>
+                  </div>
+                </div>
               </div>
-          </div>
-          <%end%>
-        </div>
-      </div>
-
-
-
-
-      <div class="shadow-lg p-3 mb-5 bg-body rounded">
-        <div class="col">
-
-          <%= link_to  sales_url  do %>
-            <div class="card" style="width: 18rem;">
+            </div>
+            <div class="col">
+              <div class="card shadow-sm shadow-lg p-3 mb-5 bg-body rounded">
+               <%= link_to  sales_url  do %>
                 <%= image_tag 'ventas.png', :class => "card-img-top", :size => "90x160" %>
                 <div class="card-body">
-                    <h5 class="card-title">Ventas</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title">VENTAS</h5>
+                  <p class="card-text">un modulo para generar alguna venta de nuestros productos</p>
+                    <% end %>
                     <br>
-                    <%= link_to  "REALIZAR VENTA", new_sale_path, class:"btn btn-primary" %>
-                    
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <%= link_to  "REALIZAR VENTA", new_sale_path, class:"btn btn-sm btn-outline-primary" %>
+                     
+                    </div>
+                    <small class="text-body-secondary">realizadas:</small>
+                  </div>
                 </div>
-            </div>
-            
-            <% end %>
-        </div>
-      </div>
-
-
-
-
-
-
-      <div class="shadow-lg p-3 mb-5 bg-body rounded">
-        <div class="col">
-          <%= link_to products_url do %>
-            <div class="card" style="width: 18rem;">
-              <%= image_tag 'productos.png', :class => "card-img-top", :size => "90x160" %>
-              <div class="card-body">
-                  <h5 class="card-title">Productos</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <br>
-                  <%= link_to  "Registrar Productos", new_product_path, class:"btn btn-primary" %>
-            </div>
-          </div>
-          <%end%>
-        </div>
-      </div>
-
-
-
-    </div>
-  </div>
-</div>
-
-
-
-<div class="shadow-lg p-3 mb-5 bg-body rounded">
-    <div class="container">
-    <div class="row row-cols-3">
-
-
-      <!-- SHADOW-->
-      <div class="shadow-lg p-3 mb-5 bg-body rounded">
-      <!-- COLUM-->
-        <div class="col">
-          <!-- CARD-->
-          <%= link_to  cotizs_url  do %>
-          <div class="card" style="width: 18rem;">
-           <%= image_tag 'cotizs.png', :class => "card-img-top", :size => "90x160" %>
-            
-              <div class="card-body">
-                <h5 class="card-title"> Cotizaciones</h5>
-                <p class="card-text">En este modulo podemos generar nuestras cotizaciones.</p>
-                
-                <br>
-                <%= link_to  "Realizar Cotizacion", new_cotiz_path, class:"btn btn-primary" %>
               </div>
-          </div>
-          <%end%>
-        </div>
-      </div>
-
-
-
-
-      <div class="shadow-lg p-3 mb-5 bg-body rounded">
-        <div class="col">
-
-          <%= link_to  sales_url  do %>
-            <div class="card" style="width: 18rem;">
-                <%= image_tag '', :class => "card-img-top", :size => "90x160" %>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm shadow-lg p-3 mb-5 bg-body rounded">
+               <%= link_to products_url do %>
+                <%= image_tag 'productos.png', :class => "card-img-top", :size => "90x160" %>
                 <div class="card-body">
-                    <h5 class="card-title">orden de Servicio</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title">PRODUCTOS</h5>
+                  <p class="card-text">Es un modulo de invetario de nuestros productos</p>
+                    <% end %>
                     <br>
-                    <%= link_to  "REALIZAR VENTA", new_sale_path, class:"btn btn-primary" %>
-                    
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                     <%= link_to  "REGISTRAR PRODUCTOS", new_product_path, class:"btn btn-sm btn-outline-primary" %>
+                     
+                    </div>
+                    <small class="text-body-secondary">Registardos:</small>
+                  </div>
                 </div>
+              </div>
             </div>
-            
-            <% end %>
-        </div>
-      </div>
 
-
-
-
-
-
-      <div class="shadow-lg p-3 mb-5 bg-body rounded">
-        <div class="col">
-          <%= link_to products_url do %>
-            <div class="card" style="width: 18rem;">
-              <%= image_tag '', :class => "card-img-top", :size => "90x160" %>
-              <div class="card-body">
-                  <h5 class="card-title">Revicion</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="col">
+              <div class="card shadow-sm shadow-lg p-3 mb-5 bg-body rounded">
+              <%= link_to  cotizs_url  do %>
+                <%= image_tag 'cotizs.png', :class => "card-img-top", :size => "90x175" %>
+                <div class="card-body">
+                <h5 class="card-title">COTIZACIONES</h5>
+                  <p class="card-text">Es un modulo para generar cotizaciones de nuestros servicios.</p>
+                    <%end%>
+                    <br>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <%= link_to  "REALIZAR COTIZACION", new_cotiz_path, class:"btn btn-sm btn-outline-primary" %>
+                    </div>
+                    <small class="text-body-secondary">Realizadas</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm shadow-lg p-3 mb-5 bg-body rounded">
+                 <%= image_tag 'reparacion.jpg', :class => "card-img-top", :size => "90x160" %>
+                <div class="card-body">
+                <h5 class="card-title">REVICION</h5>
+                  <p class="card-text">Un modulo donde se registar todo los equipos revisados y reparados</p>
                   <br>
-                  <%= link_to  "Registrar Productos", new_product_path, class:"btn btn-primary" %>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-body-secondary">revicion:</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm shadow-lg p-3 mb-5 bg-body rounded">
+                <%= image_tag 'finanzas.jpeg', :class => "card-img-top", :size => "90x160" %>
+                <div class="card-body">
+                <h5 class="card-title">FINANZAS</h5>
+                  <p class="card-text">Un modulo donde se administra todo el fondo del negocio</p>
+                  <br>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-body-secondary">fondo: $</small>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <%end%>
         </div>
       </div>
 
+    </main>
 
-
+    <footer class="text-body-secondary py-5">
+    <div class="container">
+      <p class="float-end mb-1">
+        <a href="#">Back to top</a>
+      </p>
+    
     </div>
-  </div>
-
-</div>
-
-
+    </footer>
+  
+  </body>
+</html>
 
 
 

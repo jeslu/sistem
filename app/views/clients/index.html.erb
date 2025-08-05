@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 
-<%= render "home/menu" %>
+
 
 
 <%=  form_with(url: clients_path, method: :get, class: "row g-3  justify-content-end",  data: {turbo_frame: "name"}) do |form| %>
@@ -89,12 +89,13 @@
                                 </thead>
                           <tbody>
                           <% @client_sin_deudas.each do |sin| %>
-                        <tr class="table-success">
-                          
-                          <td><%= sin.name%></td>
-                          <td><%= sin.direccion%></td>
-                          <td><%= sin.cel%></td>
-                        </tr>
+                            <tr>
+                              <tr class="table-success">
+                                
+                                <td><%= sin.name%></td>
+                                <td><%= sin.direccion%></td>
+                                <td><%= sin.cel%></td>
+                           </tr>
                         
                         <% end %>
                         

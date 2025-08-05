@@ -3,7 +3,8 @@ class ServiciosController < ApplicationController
 
   # GET /servicios or /servicios.json
   def index
-    @servicios = Servicio.all
+    @servicios = Servicio.all.load_async
+    @servicio = Servicio.new
   end
 
   # GET /servicios/1 or /servicios/1.json
@@ -25,11 +26,13 @@ class ServiciosController < ApplicationController
 
     respond_to do |format|
       if @servicio.save
-        format.html { redirect_to servicio_url(@servicio), notice: "Servicio was successfully created." }
+        format.html { redirect_to servicios_path, notice: "Servicio was successfully created." }
         format.json { render :show, status: :created, location: @servicio }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @servicio.errors, status: :unprocessable_entity }
+        format.turbo_stream {
+          render turbo_stream: turbo_stream.replace(@servicio, partial: "servicios/form", locals: {servicio: @servicio} )
+        }
       end
     end
   end

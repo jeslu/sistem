@@ -4,7 +4,8 @@ class CotizdetailsController < ApplicationController
 
   # GET /cotizdetails or /cotizdetails.json
   def index
-    @cotizdetails = @cotiz.cotizdetails.all
+    @cotizdetails = @cotiz.cotizdetails.all.load_async
+    
     
   end
 
@@ -28,7 +29,7 @@ class CotizdetailsController < ApplicationController
 
     respond_to do |format|
       if @cotizdetail.save
-        format.html { redirect_to cotiz_path(@cotiz), notice: "Cotizdetail was successfully created." }
+        format.html { redirect_to cotiz_path(@cotiz), notice: "Cotizdetail fue creado exitosamente" }
         format.json { render :show, status: :created, location: @cotizdetail }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +42,7 @@ class CotizdetailsController < ApplicationController
   def update
     respond_to do |format|
       if @cotizdetail.update(cotizdetail_params)
-        format.html { redirect_to [@cotiz, @cotizdetail], notice: "Cotizdetail was successfully updated." }
+        format.html { redirect_to [@cotiz, @cotizdetail], notice: "Cotizdetail fue actualizado exitosamente." }
         format.json { render :show, status: :ok, location: @cotizdetail }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +56,7 @@ class CotizdetailsController < ApplicationController
     @cotizdetail.destroy
 
     respond_to do |format|
-      format.html { redirect_to cotiz_url(@cotiz), notice: "Cotizdetail was successfully destroyed." }
+      format.html { redirect_to cotiz_url(@cotiz), notice: "Cotizdetail fue destruida con éxito." }
       format.json { head :no_content }
     end
   end

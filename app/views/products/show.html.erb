@@ -5,23 +5,35 @@
 <div class="shadow-lg p-3 mb-5 bg-body rounded">
 
 
-<h3>DETALLE DE PRODUCTO</h3>
+<h4>DETALLE DE PRODUCTO</h4>
       <div class="row align-items-start">
         <div class="col">
-          <%= render @product %>
+          
+              <div class="card shadow-sm shadow-lg p-3 mb-5 bg-body rounded">
+                <h5 class="card-header">Codigo: <%= @product.code%></h5
+                  <img>
+                
+                  <div class="card-body">
+                    <p class="card-title"><strong><%= @product.name_p %></strong></p>
+                    <p class="card-text"><%= @product.mark.mark%></p>
+                    <p class="card-text"><%= @product.description%></p>
+                    <p class="card-text"> <%=number_to_currency(@product.precio) %></p>
+                      <small class="text-body-secondary"><%= @product.extent.extent%>: <%= @product.stock%></small>
+                       
+                  </div>
+              </div>
         
           <div class="input-group mb-3" >     
            <%= link_to "Editar", edit_product_path(@product), :class => "btn btn-info" %>  <%= button_to "Eliminar", @product, method: :delete , :class => "btn btn-danger"%>
-                                                                                                          
+                 <%= link_to 'Elimin prod', product_path(@product), data: {
+                 turbo_method: :delete,
+                 turbo_confirm: t('common.confirm')} %>                                                                                       
           </div>
         </div>
         <div class="col">
-         <%= link_to  "nuevo movimiento", new_movimient_product_path(@product), class:"btn btn-primary" %>
-
-        
-          jaja movimientos imagen del producto
+            <%= image_tag @product.photo, width: 400 if @product.photo.attached? %>
         </div>
-          
+          <%= link_to  "nuevo movimiento", new_movimient_product_path(@product), class:"btn btn-primary" %>
       </div>
      
   </div>

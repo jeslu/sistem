@@ -1,11 +1,25 @@
 
 <h1>Cotizaciones</h1>
 <div class="shadow-lg p-3 mb-5 bg-body rounded">
+<%=  form_with(url: cotizs_path, method: :get, class: "row g-3  justify-content-end",  data: {turbo_frame: "id"}) do |form| %>
+
+    <div class="col-auto">
+        <%= form.label :query, "." %>
+      </div>
+      <div class="col-auto">
+        <%= form.text_field :query, class: "form-control", placeholder: "Buscar...." %>
+    </div>
+    <div class="col-auto">
+        <%= form.submit 'BUSCAR', class: "btn btn-warning mb-3 rounded-pill" %>
+    </div>
+<% end %>
 <%= link_to "Crear Nueva cotizacion", new_cotiz_path %>
 
   <div id="cotizs">
   <% @cotizs.each do |cotiz| %>
     <%= render cotiz %>
+   
+
    
   <% end %>
 </div>

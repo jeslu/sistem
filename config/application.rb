@@ -18,5 +18,11 @@ module Sistem
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    #available by default
+    config.i18n.available_locales = [:en, :es]
+    #lenguaje por default
+    config.i18n.default_locale = :es
+    #para poder ejecutar jquery
+    config.active_record.async_query_executor = :global_thread_pool
   end
 end

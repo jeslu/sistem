@@ -3,10 +3,22 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
+    #optener todas las categorias de forma acendente y guardarla en la variable @categories
+    @categories = Category.all.order(category: :asc).load_async
+
     if params[:query].present?
-      @products = Product.where("name_p LIKE ?", "%#{params[:query]}%")
+      @products = Product.where("code LIKE ?", "%#{params[:query]}%").load_async
     else
-      @products = Product.all
+      #@products = Product.order(updated_at: :desc).all
+       @products = Product.all.with_attached_photo.order(created_at: :desc).load_async
+       @products = Product.all.paginate(page: params[:page], per_page: 20).load_async
+
+      if params[:category_id]
+          @products = @products.where(category_id: params[:category_id]).load_async
+          
+         # @pagy, @products = pagy_countless(@products, items: 2)
+      end 
+      #@products = Product.all.paginate(page: params[:page], per_page: 5)
     end
     
     if turbo_frame_request?
@@ -37,7 +49,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to product_url(@product), notice: "Producto fue Creado exitosamente." }
+        format.html { redirect_to product_url(@product), notice: t('.created') }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -50,7 +62,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to product_url(@product), notice: "Producto fue actualizado exitosamente." }
+        format.html { redirect_to product_url(@product), notice: t('.updated') }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -64,7 +76,7 @@ class ProductsController < ApplicationController
     @product.destroy
 
     respond_to do |format|
-      format.html { redirect_to  products_url, notice: "Producto fue eliminado." }
+      format.html { redirect_to  products_url, notice: t('.destroyed') }
       format.json { head :no_content }
     end
   end
@@ -111,6 +123,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name_p, :description, :category_id, :mark_id, :extent_id, :supplier_id, :code, :precio, :costo, :active)
+      params.require(:product).permit(:name_p, :description, :category_id, :mark_id, :extent_id, :supplier_id, :code, :precio, :costo, :photo, :active)
     end
 end

@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   self.table_name = "products"
+  has_one_attached :photo
   belongs_to :category
   belongs_to :mark
   belongs_to :extent
@@ -18,6 +19,11 @@ class Product < ApplicationRecord
   def select_attributes
     "#{name_p}.....$#{precio}"
   end
+#VALIDACIONES DE PRODUCTOS
+validates :name_p, presence: true
+validates :description, presence: true
+validates :code, presence: true
+validates :precio, presence: true
 
   #logica de stock de  productos en sales o saledetails
 

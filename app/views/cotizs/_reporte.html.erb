@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+  
+   
+     <h1>Cotizacion</h1>
+  <div class="shadow-lg p-3 mb-5 bg-body rounded">
+      <table>
+        <tr>
+          <th>N°</th>
+          <th>ENCARGADO</th>
+          <th>FECHA</th>
+        </tr>
+        <tr>
+          <td><%= @cotiz.id%></td>
+          <td><%= @cotiz.user.email %></td>
+          <td><%= @cotiz.fecha%></td>
+        </tr>
+
+      </table>
+     <br><strong>Datos del Cliente</strong>
+      <table>
+        <tr>
+          <th>NOMBRE</th>
+          <th>DIRECCION</th>
+          <th>TELEFONO</th>
+        </tr>
+        <tr>
+          <td><%=@cotiz.client.name%> <%=@cotiz.client.apellido%></td>
+          <td><%=@cotiz.client.direccion%></td>
+          <td><%=@cotiz.client.cel%></td>
+        </tr>
+
+      </table>
+     
+      
+  <div>
+<br>     
+      
+     
+     <div class="shadow-lg p-3 mb-5 bg-body rounded">
+         <div class= "table-responsive">
+           <table class="table">
+             <thead>
+               <tr>
+                 <th scope="col">Cantidad</th>
+                 <th scope="col">Descripcion</th>
+                 <th scope="col">costo</th>
+                 <th scope="col">total</th>
+               </tr>
+             </thead>
+             <tbody>
+           
+             <% @cotiz.cotizdetails.each do |item| %>
+            
+                    
+              
+                 
+                 <% if item.product_id.blank?%>
+                   <tr>
+                     <th scope="row"><%= item.cant%></th>
+                     <td><%= item.servicio.name_serv %> <%= item.servicio.description %></td>
+                     <td><%= number_to_currency(item.servicio.costo_serv) %></td>
+                   
+                     <td><%= number_to_currency(item.get_valor_total) %></td>
+                     
+                   </tr>
+                 <% end %>
+     
+                 <% if item.servicio_id.blank?%>
+                  <tr>
+                     <th scope="row"><%= item.cant%> <%= item.product.extent.extent%></th>
+                            <td><%= image_tag item.product.photo, width: 100 if item.product.photo.attached? %><%=item.product.name_p%> <br>  <%= item.product.description%></td>
+                            
+                            <td><%= number_to_currency(item.product.precio)%></td>
+                            
+                            <td><%= number_to_currency(item.get_valor_total) %></td>
+                        
+                   </tr>
+                 <% end %>
+                 
+             <% end %>
+             <tr>
+                 <td><td>
+                 <td><h2>Total</h2></td>
+                  <td><strong><h3><%= number_to_currency(@cotiz.get_total) %></h3></strong></td>
+                 </tr>
+             </tbody>
+           </table>
+          <br>
+           <strong>Nota: </strong>
+          <p> 
+           Por el momento no puedo emitir factura.<br>
+           Con el 50% ya puedo realizar su pedido y en 3 a 4 días se empieza a realizar el trabajo.
+            Tiene garantía por 12 meses.
+            <br>
+            EN CASO DE REQUERIR CABLE PARA SU INTALACION SE LE NOTIFICARA EN SU MOMENTO Y ESO TENDRA UN COSTO MAS POR LOS METROS DE CABLE QUE SE USARA.
+          </P>
+         </div>
+         
+     </div>
+<br>
+
+    </body>
+</html>
+

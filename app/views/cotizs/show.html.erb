@@ -7,7 +7,7 @@
       <div class="col-3"> <strong>Fecha:</strong> <%= @cotiz.fecha%></div>
       
       <div class="col-6">Encargado<br><%= @cotiz.user.email %> </div>
-      <div class="col-6"><br><strong>Datos del Cliente</strong><br><b>Nombre:</b> <%=@cotiz.client.name%><br><b>Direccion:</b> <%=@cotiz.client.direccion%><br> <b>Tel:</b> <%=@cotiz.client.cel%></div>
+      <div class="col-6"><br><strong>Datos del Cliente</strong><br><b>Nombre:</b> <%=@cotiz.client.name%> <%=@cotiz.client.apellido%><br><b>Direccion:</b> <%=@cotiz.client.direccion%><br> <b>Tel:</b> <%=@cotiz.client.cel%></div>
     </div>
 
     <%= link_to "Edit ", edit_cotiz_path(@cotiz) %> |
@@ -48,32 +48,33 @@
             <% if item.product_id.blank?%>
               <tr>
                 <th scope="row"><%= item.cant%></th>
-                <td><%= item.servicio.name_serv %></td>
+                <td><%= item.servicio.name_serv %> <%= item.servicio.description %></td>
                 <td><%= number_to_currency(item.servicio.costo_serv) %></td>
               
                 <td><%= number_to_currency(item.get_valor_total) %></td>
                  <td> <%= button_to "eliminar", [@cotiz,item], method: :delete, data: { confirm: 'Esta seguro de eliminar deuda Pagada?' }, :class => "btn btn-danger" %> </td>
-                
+                <td> <%= button_to "editar", [@cotiz,item], method: :updated, data: { confirm: 'Esta seguro en actualizar?' }, :class => "btn btn-info" %> </td>
               </tr>
             <% end %>
 
             <% if item.servicio_id.blank?%>
                  <tr>
-                <th scope="row"><%= item.cant%></th>
-                <td><%= item.product.name_p%></td>
+                <th scope="row"><%= item.cant%> <%= item.product.extent.extent%></th>
+                <td><%= image_tag item.product.photo, width: 100 if item.product.photo.attached? %><%=item.product.name_p%> <br>  <%= item.product.description%></td>
+                
                 <td><%= number_to_currency(item.product.precio)%></td>
                 
                   <td><%= number_to_currency(item.get_valor_total) %></td>
                   <td> <%= button_to "eliminar", [@cotiz,item], method: :delete, data: { confirm: 'Esta seguro de eliminar deuda Pagada?' }, :class => "btn btn-danger" %> </td>
-                
+                                <td> <%= button_to "editar", [@cotiz,item], method: :updated, data: { confirm: 'Esta seguro en actualizar?' }, :class => "btn btn-info" %> </td>
               </tr>
             <% end %>
             
         <% end %>
         <tr>
             <td><td>
-            <td><h5>Total</h5></td>
-             <td><strong><h5><%= number_to_currency(@cotiz.get_total) %></h5></strong></td>
+            <td><h2>Total</h2></td>
+             <td><strong><h2><%= number_to_currency(@cotiz.get_total) %></h2></strong></td>
             </tr>
         </tbody>
       </table>

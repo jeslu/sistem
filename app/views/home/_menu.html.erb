@@ -1,40 +1,79 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#"><%= link_to  root_url  do  %>
+      <%= image_tag 'logo.jpeg', :size => "250x80" %>
+      <%end%>
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <% if current_user %>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
+          <li class="nav-item">
+            
+            <%= link_to  "CLIENTES", clients_url, class:"nav-link active" %>
+
+          </li>
+          <li class="nav-item">
+           
+            <%= link_to  "PRODUCTOS", products_url, class:"nav-link active" %>
+
+          </li>
+          <li class="nav-item">
+        
+            <%= link_to  "SERVICIOS", servicios_url, class:"nav-link active" %>
+
+          </li>
+          <li class="nav-item">
+        
+            <%= link_to  "VENTAS", sales_url, class:"nav-link active" %>
+
+          </li>
+          <li class="nav-item">
+            <%= link_to  "COTIZACIONES", cotizs_url, class:"nav-link active" %>
+          </li>
         <li class="nav-item">
         <%= link_to  "Blogs", articles_path, class:"nav-link" %>
           
         </li>
        
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"> <%= Date.today %></a>
+            </li>
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              CONFIG
+              </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li> <%= link_to  "ADD CATEGORIAS", new_category_path, class:"dropdown-item" %></li>
+                    <li><%= link_to  "ADD MARCAS", new_mark_path, class:"dropdown-item" %></li>
+                    <li><%= link_to  "ADD UNIDAD DE MEDIDAS", new_extent_path, class:"dropdown-item" %></li>
+                    <li><%= link_to  "ADD PROVEEDORES", new_supplier_path, class:"dropdown-item" %></li>
+                    
+                    
+                </ul>
+            </li>
 
-        <% if current_user %>
-       <li class="nav-item dropdown">
+      </ul>
+    <%end%> 
+
+      <% if current_user %>
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <%= current_user.email %> 
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Perfil</a></li>
+            <li><a class="dropdown-item" href="#"> <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> </a></li>
             <li><a class="dropdown-item" href="#"><%= current_user.role %></a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">
+            
             <%= link_to  "cerrar seccion", destroy_user_session_path, 'data-turbo-method':  :delete %>
             </a></li>
           </ul>
         </li>
-        <% end %>
-
+      <% end %>
+       
     </div>
   </div>
 </nav>

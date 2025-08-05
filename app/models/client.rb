@@ -11,6 +11,12 @@ class Client < ApplicationRecord
         "Hey #{object.name}, #{data[:value]} ya esta elegido."
       end
     }
+    
+    #concatena los parametros de productos PARA mostrar en tu select_collection.
+  def name_apellido
+    "#{name} #{apellido}"
+  end
+
 
    def get_total
         self.acounts.where(active: 0).sum(:importe)

@@ -4,7 +4,7 @@
 
   <div class="col-md-4">
     <%= form.label :codigo %>
-    <%= form.text_field :code, :class => "form-control" %>
+    <%= form.text_field :code, :class => "form-control", :required => "true" %>
   </div>
   <div  class="col-md-4" >
     <%= form.label :producto %>
@@ -20,24 +20,24 @@
   <div class = "col-md-4">
     <%= form.label :categoria %>
     
-    <%= form.collection_select(:category_id, Category.all, :id, :category, options = {}, {:class => "form-control"})%>
+    <%= form.collection_select(:category_id, Category.all.order(category: :asc), :id, :category, options = {}, {:class => "form-control"})%>
   </div>
 
   <div   class = "col-md-4" >
     <%= form.label :Marca %>
                                  
-    <%= form.collection_select(:mark_id, Mark.all, :id, :mark, options = {}, {:class => "form-control"})%>
+    <%= form.collection_select(:mark_id, Mark.all.order(mark: :asc), :id, :mark, options = {}, {:class => "form-control"})%>
   </div>
 
   <div  class = "col-md-4">
     <%= form.label :U_medida %>
                            
-    <%= form.collection_select(:extent_id, Extent.all, :id, :extent, options = {}, {:class => "form-control"})%>
+    <%= form.collection_select(:extent_id, Extent.all.order(extent: :asc), :id, :extent, options = {}, {:class => "form-control"})%>
   </div>
   <div  class = "col-md-4">
     <%= form.label :Proveedor %>
                            
-    <%= form.collection_select(:supplier_id, Supplier.all, :id, :name_pro, options = {}, {:class => "form-control"})%>
+    <%= form.collection_select(:supplier_id, Supplier.all.order(name_pro: :asc), :id, :name_pro, options = {}, {:class => "form-control"})%>
   </div>
 
 
@@ -50,6 +50,11 @@
   <div class = "col-md-4">
     <%= form.label :precio %>
     <%= form.number_field :precio, :step => "any", :class => "form-control" %>
+  </div>
+
+  <div class = "col-md-4">
+    <%= form.label :photo %>
+    <%= form.file_field :photo, :class => "form-control" %>
   </div>
 
   <div>

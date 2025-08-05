@@ -3,11 +3,28 @@ class CotizsController < ApplicationController
 
   # GET /cotizs or /cotizs.json
   def index
-    @cotizs = Cotiz.all
+    if params[:query].present?
+      @cotizs = Cotiz.where("id LIKE ?", "%#{params[:query]}%")
+    else
+       @cotizs = Cotiz.order(updated_at: :desc).all.load_async
+      end  
   end
 
   # GET /cotizs/1 or /cotizs/1.json
   def show
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+         render pdf: "Cotizacion de #{@cotiz.client.name}", 
+          formats: [:html],
+          template: "cotizs/_reporte",
+          disposition: :attachment,
+          layout: "wicked_pdf"
+      end
+    end
+
+        
   end
 
   # GET /cotizs/new

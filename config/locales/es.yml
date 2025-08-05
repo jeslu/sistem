@@ -1,0 +1,22 @@
+es:
+  common:
+    confirm: '¿estas seguro?'
+  products:
+    edit:
+      title: 'Editar producto'
+    new:
+      title: 'Añadir producto'
+    index:
+      title: 'Productos' 
+    create:
+      created: 'Producto fue Creado exitosamente.'     
+    update:
+      updated: 'Producto fue actualizado exitosamente.'  
+    destroy:
+      destroyed: 'Producto fue eliminado exitosamente.'  
+  suppliers:
+    index:
+      title: 'Provedores' 
+    new:
+      title: 'Añadir Provedor'
+           

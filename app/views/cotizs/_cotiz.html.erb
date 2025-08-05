@@ -1,5 +1,6 @@
 <div class="shadow-lg p-3 mb-5 bg-body rounded">
 
+
     <div id="<%= dom_id cotiz %>">
      
 
@@ -8,10 +9,11 @@
             N° <strong><%= cotiz.id%></strong>
           </div>
           <div class="card-body">
-            <h5 class="card-title">  <%= cotiz.client.name %></h5>
-            <p class="card-text"><%= cotiz.user.email %></p>
+            <h5 class="card-title">  <%= cotiz.client.name %> <%= cotiz.client.apellido %></h5>
+            <p class="card-text"> <%= cotiz.fecha %></p>
             
-              <%= link_to "Ver Detalles", cotiz , :class => "btn btn-primary"%>
+              <%= link_to "Ver Detalles", cotiz , :class => "btn btn-primary"%>  <%= link_to "DESCARGAR PDF",  cotiz_url(cotiz, format: :pdf),:class => "btn btn-success"%>
+              
           </div>
         </div>
 

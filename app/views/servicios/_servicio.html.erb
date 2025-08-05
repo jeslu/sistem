@@ -1,22 +1,13 @@
 <div id="<%= dom_id servicio %>">
-  <p>
-    <strong>Name serv:</strong>
-    <%= servicio.name_serv %>
-  </p>
+  
+  
+        <tr>
+          <th> <%= servicio.name_serv %></th>
+          <td><%= servicio.description %></td>
+          <td><%= servicio.costo_serv %></td>
+          <td> <%= link_to "VER", servicio%>   <%= link_to "EDITAR", edit_servicio_path(servicio) %>  <%= button_to "ELIMINAR", servicio, method: :delete, class: "btn btn--light" %></td>
+          
+        
+        </tr>
 
-  <p>
-    <strong>Description:</strong>
-    <%= servicio.description %>
-  </p>
-
-  <p>
-    <strong>Costo serv:</strong>
-    <%= servicio.costo_serv %>
-  </p>
-
-  <p>
-    <strong>Active:</strong>
-    <%= servicio.active %>
-  </p>
-
-</div>
+  </div>

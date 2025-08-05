@@ -30,7 +30,7 @@ Rails.application.routes.draw do
    
   resources :extents
   resources :marks
-  resources :categories
+  resources :categories, except: :show
 
   devise_for :users
   #get 'home/index'
