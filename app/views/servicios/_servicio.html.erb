@@ -1,13 +1,23 @@
 <div id="<%= dom_id servicio %>">
   
-  
-        <tr>
-          <th> <%= servicio.name_serv %></th>
-          <td><%= servicio.description %></td>
-          <td><%= servicio.costo_serv %></td>
-          <td> <%= link_to "VER", servicio%>   <%= link_to "EDITAR", edit_servicio_path(servicio) %>  <%= button_to "ELIMINAR", servicio, method: :delete, class: "btn btn--light" %></td>
-          
+<%= turbo_frame_tag servicio do %>
+    <div class="card" style="width: 18rem;">
+ 
+     <div class="card-body">
+    <h5 class="card-title"><%= servicio.name_serv %></h5>
+    <p class="card-text"><%= servicio.description %></p>
+    <p class="card-text">Costo: <%= servicio.costo_serv %></p>
+     <%= link_to "EDITAR", edit_servicio_path(servicio), class:"btn btn-primary" %>| <%= button_to "ELIMINAR", servicio_path(servicio), method: :delete, class: "btn btn-danger" %>
+  </div>
+</div>
+         
+         
+           
+         
+            
+         
+<% end %>          
         
-        </tr>
+        
 
   </div>

@@ -4,6 +4,7 @@ class Servicio < ApplicationRecord
 
 
      validates :name_serv, :description, :costo_serv, presence: true
+     #scope :ordered, -> { order(id: :asc) }
 #se encarga de realizar una acción después de que un nuevo registro (creado con éxito) es guardado en la base de datos
      after_create_commit {broadcast_prepend_to "servicios"}
      after_destroy_commit {broadcast_remove_to "servicios"}

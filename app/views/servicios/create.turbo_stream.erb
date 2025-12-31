@@ -1,0 +1,4 @@
+<%= turbo_stream.prepend "servicios", partial: "servicios/servicio", locals: { servicio: @servicio } %>
+<%= turbo_stream.update Servicio.new, "" %>
+#<%= turbo_stream.append "servicios", @servicio %>
+ #<%= turbo_stream.replace "new_servicio", partial: "form", locals: { servicio: Servicio.new}    %> 

@@ -1,18 +1,44 @@
 
-<p style="color: green"><%= notice %></p>
+
+<!-- Button trigger modal -->
+<button  data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <%= link_to "Nuevo Servicio", 
+              new_servicio_path,
+              class: "btn btn--primary",
+                  data: { turbo_frame: dom_id(Servicio.new)} %>
+
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nuevo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <%= turbo_frame_tag  Servicio.new %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 <h1>Servicios</h1>
 
 
+
+
+
+
 <div id="servicios">
-  <% @servicios.each do |servicio| %>
-  <%= render servicio %>
-  <% end %>
+      <% @servicios.each do |servicio| %>
+       <div class="card mb-3">
+          <%= render servicio %>
+        </div>
+      <% end %>
 </div>
-
-  
-
-
-<%= link_to "New servicio", new_servicio_path %>
-
-

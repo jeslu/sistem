@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     else
       #@products = Product.order(updated_at: :desc).all
        @products = Product.all.with_attached_photo.order(created_at: :desc).load_async
-       @products = Product.all.paginate(page: params[:page], per_page: 20).load_async
+       @products = Product.all.paginate(page: params[:page], per_page: 30).load_async
 
       if params[:category_id]
           @products = @products.where(category_id: params[:category_id]).load_async

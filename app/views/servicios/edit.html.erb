@@ -1,7 +1,7 @@
 <h1>Editing servicio</h1>
-
-<%= render "form", servicio: @servicio %>
-
+<%= turbo_frame_tag @servicio do %>
+ <%= render "form", servicio: @servicio %>
+<% end %>
 <br>
 
 <div>
